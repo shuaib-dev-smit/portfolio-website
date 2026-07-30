@@ -8,7 +8,7 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { 
-      font-family: 'Segoe UI', Arial, sans-serif; /* OLD FONT WAPAS */
+      font-family: 'Segoe UI', Arial, sans-serif;
       background: #0a0a0a; 
       color: #fff; 
       line-height: 1.7; 
@@ -114,14 +114,46 @@
       margin-bottom: 20px; 
     }
     #home p { font-size: 22px; color: #aaa; margin-bottom: 40px; }
+    
+    /* PICTURE KE PEECHE GLOW */
+    .img-wrapper {
+      position: relative;
+      display: inline-block;
+      margin: 30px 0;
+      z-index: 1;
+    }
+    .img-wrapper::before {
+      content: '';
+      position: absolute;
+      top: -15px; 
+      left: -15px; 
+      right: -15px; 
+      bottom: -15px;
+      background: linear-gradient(45deg, #00ff88, #0077ff, #a855f7, #00ff88);
+      background-size: 300% 300%;
+      border-radius: 50%;
+      z-index: -1;
+      animation: rotateRing 4s linear infinite, glowMove 3s ease infinite;
+      filter: blur(10px);
+    }
+    @keyframes rotateRing {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes glowMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
     #home img { 
       width: 220px; 
       height: 220px; 
       border-radius: 50%; 
-      border: 4px solid var(--green);
-      margin: 30px 0; 
+      border: 4px solid #0a0a0a;
       object-fit: cover; 
-      box-shadow: 0 0 40px rgba(0,255,136,0.4); 
+      box-shadow: 0 0 40px rgba(0,255,136,0.5); 
+      position: relative;
+      z-index: 2;
     }
     
     .btn { 
@@ -176,7 +208,6 @@
       box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
       text-align: center;
     }
-    
     .contact-photo { 
       width: 180px; 
       height: 180px; 
@@ -185,7 +216,6 @@
       object-fit: cover;
       margin-bottom: 30px;
     }
-    
     .contact-item {
       display: flex;
       align-items: center;
@@ -197,9 +227,7 @@
       flex-wrap: wrap;
       word-break: break-word;
     }
-    
     .contact-item .icon { font-size: 24px; }
-    
     .contact-buttons { 
       display: flex; 
       flex-direction: column;
@@ -207,7 +235,6 @@
       margin-top: 30px;
       align-items: center;
     }
-    
     .btn-whatsapp { background: #25D366; color: #fff; width: 80%; max-width: 300px; }
     .btn-call { background: #0077ff; color: #fff; width: 80%; max-width: 300px; }
 
@@ -255,7 +282,11 @@
     <div class="home-setting" onclick="toggleMenu()">⚙️</div>
     
     <h1>Hi, I'm SHUAIB</h1>
-    <img src="shuaib1.jpg" alt="Shuaib Photo">
+    
+    <div class="img-wrapper">
+      <img src="shuaib1.jpg" alt="Shuaib Photo">
+    </div>
+    
     <p>Web Developer | SMIT Student | From Karachi, Sindh, Pakistan</p>
     <a href="#projects" class="btn">💼 View My Work</a>
   </section>
@@ -312,7 +343,6 @@
 
   <section id="contact">
     <h2>Contact Us My</h2>
-    
     <div class="contact-box">
       <img src="shuaib1.jpg" alt="Shuaib Photo" class="contact-photo">
       
@@ -320,12 +350,10 @@
         <span class="icon">🇵🇰</span>
         <span>+92 310 7389936</span>
       </div>
-      
       <div class="contact-item">
         <span class="icon">📧</span>
         <span>Email: shuaibahmedsolangi5@gmail.com</span>
       </div>
-      
       <div class="contact-item">
         <span class="icon">📍</span>
         <span>Location: Karachi, Sindh, Pakistan</span>
@@ -346,7 +374,6 @@
     function toggleMenu() {
       document.getElementById("settingMenu").classList.toggle("show");
     }
-    
     window.onclick = function(event) {
       if (!event.target.matches('.menu-dots') && !event.target.matches('.home-setting')) {
         var dropdown = document.getElementById("settingMenu");

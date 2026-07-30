@@ -7,15 +7,24 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0a0a; color: #fff; line-height: 1.7; scroll-behavior: smooth; }
-    header { background: #111; padding: 18px 0; position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 2px solid #00ff88; }
+    
+    /* 2 COLOR THEME: GREEN + BLUE */
+    :root {
+      --green: #00ff88;
+      --blue: #0077ff;
+      --dark: #0a0a0a;
+    }
+    
+    header { background: linear-gradient(90deg, var(--green), var(--blue)); padding: 18px 0; position: fixed; width: 100%; top: 0; z-index: 1000; }
     nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    .logo { font-size: 26px; font-weight: bold; color: #00ff88; }
+    .logo { font-size: 26px; font-weight: bold; color: #000; }
     .nav-links { list-style: none; display: flex; gap: 30px; }
-    .nav-links a { color: #fff; text-decoration: none; transition: 0.3s; font-weight: 500; }
-    .nav-links a:hover { color: #00ff88; }
+    .nav-links a { color: #000; text-decoration: none; transition: 0.3s; font-weight: 600; }
+    .nav-links a:hover { color: #fff; }
+    
     section { padding: 120px 20px; max-width: 1100px; margin: 0 auto; }
     #home { text-align: center; padding-top: 180px; min-height: 90vh; }
-    #home h1 { font-size: 56px; color: #00ff88; margin-bottom: 15px; }
+    #home h1 { font-size: 56px; background: linear-gradient(90deg, var(--green), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 15px; }
     #home p { font-size: 22px; color: #aaa; margin-bottom: 30px; }
     
     /* HOME PHOTO */
@@ -23,26 +32,26 @@
       width: 200px; 
       height: 200px; 
       border-radius: 50%; 
-      border: 4px solid #00ff88; 
+      border: 4px solid var(--green); 
       margin: 25px 0; 
       object-fit: cover;
       box-shadow: 0 0 30px rgba(0,255,136,0.5);
     }
     
-    .btn { display: inline-block; padding: 14px 35px; background: #00ff88; color: #000; text-decoration: none; border-radius: 8px; font-weight: bold; transition: 0.3s; margin: 10px; }
-    .btn:hover { background: #00cc70; transform: translateY(-3px); box-shadow: 0 0 20px rgba(0,255,136,0.4); }
-    .btn-outline { background: transparent; color: #00ff88; border: 2px solid #00ff88; }
-    .btn-outline:hover { background: #00ff88; color: #000; }
-    .btn-whatsapp { background: #25D366; color: #fff; }
-    .btn-whatsapp:hover { background: #1ebe5a; box-shadow: 0 0 20px rgba(37,211,102,0.4); }
-    .btn-call { background: #0077ff; color: #fff; }
-    .btn-call:hover { background: #005fcc; box-shadow: 0 0 20px rgba(0,119,255,0.4); }
+    .btn { display: inline-block; padding: 14px 35px; background: linear-gradient(90deg, var(--green), var(--blue)); color: #000; text-decoration: none; border-radius: 8px; font-weight: bold; transition: 0.3s; margin: 10px; }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 0 25px rgba(0,255,136,0.4); }
+    .btn-outline { background: transparent; color: var(--green); border: 2px solid var(--green); }
+    .btn-outline:hover { background: linear-gradient(90deg, var(--green), var(--blue)); color: #000; }
+    .btn-whatsapp { background: linear-gradient(90deg, #25D366, #128C7E); color: #fff; }
+    .btn-whatsapp:hover { box-shadow: 0 0 25px rgba(37,211,102,0.4); }
+    .btn-call { background: linear-gradient(90deg, var(--blue), #005fcc); color: #fff; }
+    .btn-call:hover { box-shadow: 0 0 25px rgba(0,119,255,0.4); }
     
-    h2 { font-size: 40px; color: #00ff88; margin-bottom: 40px; text-align: center; }
+    h2 { font-size: 40px; background: linear-gradient(90deg, var(--green), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 40px; text-align: center; }
     .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
     .card { background: #1a1a1a; padding: 30px; border-radius: 12px; border: 1px solid #333; transition: 0.4s; }
-    .card:hover { border-color: #00ff88; transform: translateY(-10px); }
-    .card h3 { color: #00ff88; margin-bottom: 12px; font-size: 22px; }
+    .card:hover { border-color: var(--green); transform: translateY(-10px); }
+    .card h3 { color: var(--green); margin-bottom: 12px; font-size: 22px; }
 
     /* CONTACT SECTION WITH PHOTO */
     .contact-box {
@@ -57,15 +66,18 @@
       width: 150px;
       height: 150px;
       border-radius: 50%;
-      border: 3px solid #00ff88;
+      border: 3px solid var(--green);
       object-fit: cover;
       box-shadow: 0 0 20px rgba(0,255,136,0.4);
     }
     .contact-info { text-align: left; }
     .contact-info p { font-size: 19px; margin: 15px 0; color: #ddd; }
     .contact-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
+    
+    /* FLAG STYLE */
+    .flag { font-size: 24px; margin-right: 8px; }
 
-    footer { text-align: center; padding: 30px; background: #111; color: #777; border-top: 1px solid #333; }
+    footer { text-align: center; padding: 30px; background: linear-gradient(90deg, var(--green), var(--blue)); color: #000; font-weight: 600; }
     
     @media(max-width: 768px) { 
       .nav-links { gap: 12px; font-size: 14px; } 
@@ -93,8 +105,8 @@
     <h1>Hi, I'm Shuaib</h1>
     <img src="shuaib1.jpg" alt="Shuaib Photo">
     <p>Web Developer | SMIT Student | From Karachi, Sindh, Pakistan</p>
-    <a href="#projects" class="btn">View My Work</a>
-    <a href="resume.pdf" class="btn btn-outline" target="_blank">📄 Download Resume</a>
+    <a href="#projects" class="btn">💼 View My Work</a>
+    <a href="resume.pdf" class="btn btn-outline" target="_blank" download>📄⬇️ Download Resume</a>
   </section>
 
   <section id="about">
@@ -130,6 +142,7 @@
     <div class="contact-box">
       <img src="shuaib1.jpg" alt="Shuaib Photo" class="contact-photo">
       <div class="contact-info">
+        <p><span class="flag">🇵🇰</span> +92 310 7389936</p>
         <p>📧 Email: shuaibahmedsolangi5@gmail.com</p>
         <p>📍 Location: Karachi, Sindh, Pakistan</p>
         <div class="contact-buttons">

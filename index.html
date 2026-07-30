@@ -18,22 +18,24 @@
     .logo { font-size: 26px; font-weight: bold; color: #000; letter-spacing: 2px; }
     
     .nav-right { display: flex; align-items: center; gap: 20px; position: relative; }
-    .nav-links { list-style: none; display: flex; gap: 30px; }
-    .nav-links a { color: #000; text-decoration: none; font-weight: 600; }
-    .nav-links a:hover { color: #fff; }
     
-    /* 3 DOTS SETTING MENU */
-    .menu-dots { font-size: 24px; color: #000; cursor: pointer; font-weight: bold; }
+    /* DESKTOP MENU */
+    .desktop-menu { display: flex; gap: 25px; }
+    .desktop-menu a { color: #000; text-decoration: none; font-weight: 600; padding: 8px 12px; border-radius: 5px; transition: 0.3s; }
+    .desktop-menu a:hover { background: #000; color: #fff; }
+    
+    /* MOBILE 3 DOTS */
+    .menu-dots { display: none; font-size: 24px; color: #000; cursor: pointer; font-weight: bold; }
     .menu-dots:hover { color: #fff; }
     
-    /* SETTING DROPDOWN */
+    /* SETTING DROPDOWN FOR MOBILE */
     .dropdown { display: none; position: absolute; top: 45px; right: 0; background: #1a1a1a; border: 2px solid var(--green); border-radius: 8px; padding: 15px; min-width: 180px; z-index: 9999; }
     .dropdown.show { display: block; }
-    .dropdown a { display: block; color: #fff; text-decoration: none; padding: 10px; border-radius: 5px; }
+    .dropdown a { display: block; color: #fff; text-decoration: none; padding: 10px; border-radius: 5px; margin-bottom: 5px; }
     .dropdown a:hover { background: linear-gradient(90deg, var(--green), var(--blue)); color: #000; }
     
-    section { padding: 100px 20px; max-width: 1100px; margin: 0 auto; } /* PEHLE 120px THA */
-    #home { text-align: center; padding-top: 160px; min-height: 90vh; position: relative; padding-bottom: 60px; } /* NEECHE GAP KAM */
+    section { padding: 100px 20px; max-width: 1100px; margin: 0 auto; }
+    #home { text-align: center; padding-top: 160px; min-height: 90vh; position: relative; padding-bottom: 60px; }
     
     /* HOME PE SETTING ICON */
     .home-setting { position: absolute; top: 20px; right: 20px; font-size: 28px; cursor: pointer; background: linear-gradient(90deg, var(--green), var(--blue)); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
@@ -52,7 +54,7 @@
     .btn-call { background: #0077ff; color: #fff; }
     .btn-call:hover { background: #005fcc; }
     
-    h2 { font-size: 40px; background: linear-gradient(90deg, var(--green), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 30px; text-align: center; } /* MARGIN KAM */
+    h2 { font-size: 40px; background: linear-gradient(90deg, var(--green), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 30px; text-align: center; }
     .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
     .card { background: #1a1a1a; padding: 30px; border-radius: 12px; border: 1px solid #333; transition: 0.4s; }
     .card:hover { border-color: var(--green); transform: translateY(-10px); }
@@ -60,23 +62,25 @@
 
     /* SKILLS SECTION */
     .skills-container { max-width: 700px; margin: 0 auto; }
-    .skill { margin-bottom: 20px; } /* PEHLE 25px THA */
+    .skill { margin-bottom: 20px; }
     .skill-name { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 600; font-size: 18px; }
     .skill-bar { background: #333; border-radius: 10px; height: 12px; overflow: hidden; }
     .skill-progress { height: 100%; background: linear-gradient(90deg, var(--green), var(--blue)); border-radius: 10px; }
 
-    .contact-box { display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 20px; } /* MARGIN KAM */
+    .contact-box { display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 20px; }
     .contact-photo { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--green); object-fit: cover; }
-    .contact-info p { font-size: 19px; margin: 12px 0; color: #ddd; } /* MARGIN KAM */
+    .contact-info p { font-size: 19px; margin: 12px 0; color: #ddd; }
     .contact-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
     .flag { font-size: 24px; margin-right: 8px; }
 
-    footer { text-align: center; padding: 30px 20px; background: linear-gradient(90deg, var(--green), var(--blue)); color: #000; font-weight: 600; } /* PEHLE 40px THA */
+    footer { text-align: center; padding: 30px 20px; background: linear-gradient(90deg, var(--green), var(--blue)); color: #000; font-weight: 600; }
     
-    @media(max-width: 768px) { 
-      .nav-links { gap: 12px; font-size: 13px; } 
+    /* RESPONSIVE - MOBILE */
+    @media(max-width: 900px) { 
+      .desktop-menu { display: none; } /* DESKTOP MENU CHUPAO */
+      .menu-dots { display: block; } /* 3 DOTS SHOW KARO */
       #home h1 { font-size: 38px; }
-      section { padding: 80px 20px; } /* MOBILE PE BHI GAP KAM */
+      section { padding: 80px 20px; }
       .home-setting { top: 10px; right: 10px; width: 45px; height: 45px; font-size: 24px; }
       .contact-box { flex-direction: column; }
       .contact-info { text-align: center; }
@@ -88,20 +92,21 @@
     <nav>
       <div class="logo">SHUAIB</div>
       <div class="nav-right">
-        <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact Us My</a></li>
-        </ul>
+        <!-- DESKTOP PE YE SHOW HONGE -->
+        <div class="desktop-menu">
+          <a href="#">⚙️ Setting</a>
+          <a href="#">🌙 Dark Mode</a>
+          <a href="#">📞 Help line</a>
+        </div>
+        
+        <!-- MOBILE PE YE 3 DOTS SHOW HONGA -->
         <div class="menu-dots" onclick="toggleMenu()">⋮</div>
         
-        <!-- SETTING DROPDOWN -->
+        <!-- MOBILE DROPDOWN MENU -->
         <div class="dropdown" id="settingMenu">
-          <a href="#">⚙️ Settings</a>
-          <a href="#">🌙 Dark Mode</a>
-          <a href="#">📞 Help</a>
+          <a href="#home">🏠 Home</a>
+          <a href="#projects">💼 Projects</a>
+          <a href="#contact">📞 Contact Us My</a>
         </div>
       </div>
     </nav>

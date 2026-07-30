@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SHUAIB - Web Developer Portfolio</title>
   
-  <!-- STYLISH FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   
   <style>
@@ -26,7 +25,6 @@
       --glass: rgba(255, 255, 255, 0.03);
     }
     
-    /* ANIMATED BACKGROUND */
     body::before {
       content: '';
       position: fixed;
@@ -44,7 +42,6 @@
       50% { transform: scale(1.1) rotate(5deg); }
     }
     
-    /* STYLISH HEADER */
     header { 
       background: rgba(5, 5, 5, 0.8); 
       backdrop-filter: blur(20px);
@@ -73,8 +70,6 @@
     }
     
     .nav-right { display: flex; align-items: center; gap: 20px; position: relative; }
-    
-    /* STYLISH DESKTOP MENU */
     .desktop-menu { display: flex; gap: 15px; }
     .desktop-menu a { 
       color: #fff; 
@@ -85,18 +80,7 @@
       transition: 0.4s; 
       background: var(--glass);
       border: 1px solid rgba(0,255,136,0.2);
-      position: relative;
-      overflow: hidden;
     }
-    .desktop-menu a::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%;
-      width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0,255,136,0.3), transparent);
-      transition: 0.5s;
-    }
-    .desktop-menu a:hover::before { left: 100%; }
     .desktop-menu a:hover { 
       background: linear-gradient(90deg, var(--neon-green), var(--neon-blue)); 
       color: #000; 
@@ -105,7 +89,6 @@
     }
     
     .menu-dots { display: none; font-size: 28px; color: #fff; cursor: pointer; }
-    
     .dropdown { 
       display: none; 
       position: absolute; 
@@ -132,19 +115,11 @@
       border-radius: 10px; 
       margin-bottom: 5px; 
       font-weight: 600;
-      transition: 0.3s;
     }
     .dropdown a:hover { background: linear-gradient(90deg, var(--neon-green), var(--neon-blue)); color: #000; }
     
     section { padding: 120px 20px; max-width: 1200px; margin: 0 auto; }
-    
-    /* STYLISH HOME */
-    #home { 
-      text-align: center; 
-      padding-top: 200px; 
-      min-height: 100vh; 
-      position: relative; 
-    }
+    #home { text-align: center; padding-top: 200px; min-height: 100vh; position: relative; }
     
     .home-setting { 
       position: absolute; 
@@ -162,18 +137,8 @@
       align-items: center; 
       justify-content: center; 
       transition: 0.5s; 
-      animation: rotate 4s linear infinite;
-    }
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    .home-setting:hover { 
-      box-shadow: 0 0 40px var(--neon-green); 
-      border-color: var(--neon-blue);
     }
     
-    /* TYPING EFFECT */
     #home h1 { 
       font-family: 'Orbitron', sans-serif;
       font-size: 72px; 
@@ -182,22 +147,10 @@
       -webkit-background-clip: text; 
       -webkit-text-fill-color: transparent; 
       margin-bottom: 20px; 
-      letter-spacing: -2px;
-      animation: textGlow 3s ease-in-out infinite;
-    }
-    @keyframes textGlow {
-      0%, 100% { filter: drop-shadow(0 0 20px var(--neon-green)); }
-      50% { filter: drop-shadow(0 0 30px var(--neon-blue)); }
     }
     
-    #home p { 
-      font-size: 26px; 
-      color: #aaa; 
-      margin-bottom: 40px; 
-      font-weight: 300;
-    }
+    #home p { font-size: 26px; color: #aaa; margin-bottom: 40px; }
     
-    /* STYLISH IMAGE WITH RING */
     .img-wrapper {
       position: relative;
       display: inline-block;
@@ -225,7 +178,6 @@
       box-shadow: 0 0 60px rgba(0,255,136,0.5); 
     }
     
-    /* STYLISH BUTTONS */
     .btn { 
       display: inline-block; 
       padding: 18px 45px; 
@@ -237,28 +189,11 @@
       transition: 0.4s; 
       margin: 10px; 
       font-size: 17px;
-      letter-spacing: 1.5px;
-      position: relative;
-      overflow: hidden;
     }
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 50%; left: 50%;
-      width: 0; height: 0;
-      background: rgba(255,255,255,0.3);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: 0.5s;
-    }
-    .btn:hover::before { width: 300px; height: 300px; }
     .btn:hover { 
       transform: translateY(-8px) scale(1.05); 
       box-shadow: 0 15px 40px rgba(0,255,136,0.5); 
     }
-    
-    .btn-whatsapp { background: linear-gradient(90deg, #25D366, #128C7E); color: #fff; }
-    .btn-call { background: linear-gradient(90deg, var(--neon-blue), #005fcc); color: #fff; }
     
     h2 { 
       font-family: 'Orbitron', sans-serif;
@@ -269,10 +204,8 @@
       -webkit-text-fill-color: transparent; 
       margin-bottom: 60px; 
       text-align: center; 
-      letter-spacing: 2px;
     }
     
-    /* STYLISH GLASS CARDS */
     .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; }
     .card { 
       background: var(--glass); 
@@ -281,27 +214,14 @@
       border-radius: 25px; 
       border: 2px solid rgba(0,255,136,0.2); 
       transition: 0.5s; 
-      position: relative;
-      overflow: hidden;
     }
-    .card::before {
-      content: '';
-      position: absolute;
-      top: -50%; left: -50%;
-      width: 200%; height: 200%;
-      background: linear-gradient(45deg, transparent, rgba(0,255,136,0.1), transparent);
-      transform: rotate(45deg);
-      transition: 0.5s;
-    }
-    .card:hover::before { top: 100%; left: 100%; }
     .card:hover { 
       border-color: var(--neon-green); 
-      transform: translateY(-20px) scale(1.02); 
+      transform: translateY(-20px); 
       box-shadow: 0 25px 50px rgba(0,255,136,0.3);
     }
     .card h3 { color: var(--neon-green); margin-bottom: 15px; font-size: 26px; font-weight: 700; }
 
-    /* STYLISH SKILLS */
     .skills-container { max-width: 750px; margin: 0 auto; }
     .skill { margin-bottom: 30px; }
     .skill-name { display: flex; justify-content: space-between; margin-bottom: 12px; font-weight: 700; font-size: 19px; }
@@ -310,30 +230,68 @@
       height: 100%; 
       background: linear-gradient(90deg, var(--neon-green), var(--neon-blue)); 
       border-radius: 15px;
-      animation: fillBar 2s ease;
       box-shadow: 0 0 20px var(--neon-green);
     }
-    @keyframes fillBar {
-      from { width: 0 !important; }
-    }
 
+    /* NEW STYLISH CONTACT BOX - GREEN BORDER */
     .contact-box { 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      gap: 60px; 
-      flex-wrap: wrap; 
-      margin-top: 40px; 
-      background: var(--glass);
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(0, 255, 136, 0.05);
       backdrop-filter: blur(20px);
-      padding: 50px;
-      border-radius: 30px;
-      border: 2px solid rgba(0,255,136,0.2);
+      padding: 50px 40px;
+      border-radius: 25px;
+      border: 3px solid var(--neon-green); /* GREEN BOX */
+      box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+      text-align: center;
     }
-    .contact-photo { width: 180px; height: 180px; border-radius: 50%; border: 4px solid var(--neon-green); object-fit: cover; }
-    .contact-info p { font-size: 21px; margin: 18px 0; color: #ddd; font-weight: 600; }
-    .contact-buttons { display: flex; gap: 20px; flex-wrap: wrap; }
-    .flag { font-size: 28px; margin-right: 10px; }
+    
+    .contact-photo { 
+      width: 180px; 
+      height: 180px; 
+      border-radius: 50%; 
+      border: 4px solid var(--neon-green); 
+      object-fit: cover;
+      margin-bottom: 30px;
+      box-shadow: 0 0 30px rgba(0,255,136,0.5);
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: 20px;
+      margin: 20px 0;
+      font-weight: 600;
+      flex-wrap: wrap;
+      word-break: break-word; /* EMAIL TORNE KE LIYE */
+    }
+    
+    .contact-item .icon {
+      font-size: 24px;
+    }
+    
+    .contact-buttons { 
+      display: flex; 
+      flex-direction: column; /* EK KE NICHE EK */
+      gap: 15px; 
+      margin-top: 30px;
+      align-items: center;
+    }
+    
+    .btn-whatsapp { 
+      background: linear-gradient(90deg, #25D366, #128C7E); 
+      color: #fff;
+      width: 80%;
+      max-width: 300px;
+    }
+    .btn-call { 
+      background: linear-gradient(90deg, var(--neon-blue), #005fcc); 
+      color: #fff;
+      width: 80%;
+      max-width: 300px;
+    }
 
     footer { 
       text-align: center; 
@@ -342,7 +300,6 @@
       color: #000; 
       font-weight: 800; 
       font-size: 17px;
-      letter-spacing: 1px;
     }
     
     @media(max-width: 900px) { 
@@ -351,6 +308,8 @@
       #home h1 { font-size: 48px; }
       h2 { font-size: 38px; }
       section { padding: 90px 20px; }
+      .contact-box { padding: 35px 25px; }
+      .contact-item { font-size: 18px; }
     }
   </style>
 </head>
@@ -437,16 +396,29 @@
 
   <section id="contact">
     <h2>Contact Us My</h2>
+    
+    <!-- NEW GREEN BOX CONTACT -->
     <div class="contact-box">
       <img src="shuaib1.jpg" alt="Shuaib Photo" class="contact-photo">
-      <div class="contact-info">
-        <p><span class="flag">🇵🇰</span> +92 310 7389936</p>
-        <p>📧 Email: shuaibahmedsolangi5@gmail.com</p>
-        <p>📍 Location: Karachi, Sindh, Pakistan</p>
-        <div class="contact-buttons">
-          <a href="https://wa.me/923107389936" class="btn btn-whatsapp" target="_blank">💬 WhatsApp</a>
-          <a href="tel:+923107389936" class="btn btn-call">📞 Call Me</a>
-        </div>
+      
+      <div class="contact-item">
+        <span class="icon">🇵🇰</span>
+        <span>+92 310 7389936</span>
+      </div>
+      
+      <div class="contact-item">
+        <span class="icon">📧</span>
+        <span>Email: shuaibahmedsolangi5@gmail.com</span>
+      </div>
+      
+      <div class="contact-item">
+        <span class="icon">📍</span>
+        <span>Location: Karachi, Sindh, Pakistan</span>
+      </div>
+      
+      <div class="contact-buttons">
+        <a href="https://wa.me/923107389936" class="btn btn-whatsapp" target="_blank">💬 WhatsApp</a>
+        <a href="tel:+923107389936" class="btn btn-call">📞 Call Me</a>
       </div>
     </div>
   </section>
@@ -470,4 +442,4 @@
     }
   </script>
 </body>
-                                                                    </html>
+  </html>

@@ -33,6 +33,10 @@
     .btn:hover { background: #00cc70; transform: translateY(-3px); box-shadow: 0 0 20px rgba(0,255,136,0.4); }
     .btn-outline { background: transparent; color: #00ff88; border: 2px solid #00ff88; }
     .btn-outline:hover { background: #00ff88; color: #000; }
+    .btn-whatsapp { background: #25D366; color: #fff; }
+    .btn-whatsapp:hover { background: #1ebe5a; box-shadow: 0 0 20px rgba(37,211,102,0.4); }
+    .btn-call { background: #0077ff; color: #fff; }
+    .btn-call:hover { background: #005fcc; box-shadow: 0 0 20px rgba(0,119,255,0.4); }
     
     h2 { font-size: 40px; color: #00ff88; margin-bottom: 40px; text-align: center; }
     .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
@@ -59,6 +63,7 @@
     }
     .contact-info { text-align: left; }
     .contact-info p { font-size: 19px; margin: 15px 0; color: #ddd; }
+    .contact-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
 
     footer { text-align: center; padding: 30px; background: #111; color: #777; border-top: 1px solid #333; }
     
@@ -67,6 +72,7 @@
       #home h1 { font-size: 38px; }
       .contact-box { flex-direction: column; }
       .contact-info { text-align: center; }
+      .contact-buttons { justify-content: center; }
     }
   </style>
 </head>
@@ -126,8 +132,10 @@
       <div class="contact-info">
         <p>📧 Email: shuaibahmedsolangi5@gmail.com</p>
         <p>📍 Location: Karachi, Sindh, Pakistan</p>
-        <br>
-        <a href="https://wa.me/923107389936" class="btn" target="_blank">💬 Chat on WhatsApp</a>
+        <div class="contact-buttons">
+          <a href="https://wa.me/923107389936" class="btn btn-whatsapp" target="_blank">💬 WhatsApp</a>
+          <a href="tel:+923107389936" class="btn btn-call">📞 Call Me</a>
+        </div>
       </div>
     </div>
   </section>

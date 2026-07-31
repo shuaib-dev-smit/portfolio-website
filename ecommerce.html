@@ -66,7 +66,7 @@ header {
   width: 100%;
 }
 .btn:hover { background: #008a33; }
-.btn-remove { background: #ff4444; font-size: 12px; padding: 5px 10px; width: auto; }
+.btn-remove { background: #ff4444; font-size: 12px; padding: 5px 10px; width: auto; margin-left: 5px; }
 
 .back { text-align: center; margin: 30px 0; }
 .back a { text-decoration: none; color: #333; font-weight: 700; }
@@ -140,3 +140,147 @@ const products = [
 {id:11,name:"Camera DSLR",price:55000,img:"https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=400"},
 {id:12,name:"Tripod Stand",price:1500,img:"https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=400"},
 {id:13,name:"Perfume 100ml",price:1500,img:"https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400"},
+{id:14,name:"Face Cream",price:800,img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400"},
+{id:15,name:"Shampoo 500ml",price:450,img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400"},
+{id:16,name:"Sunglasses",price:650,img:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400"},
+{id:17,name:"Jeans Pant",price:1800,img:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=400"},
+{id:18,name:"Hoodie Jacket",price:2200,img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400"},
+{id:19,name:"Kurta Women",price:1600,img:"https://images.unsplash.com/photo-1585483338906-3c7f4d4e4c2b?w=400"},
+{id:20,name:"Cap Sports",price:350,img:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400"},
+{id:21,name:"Rice 5kg",price:900,img:"https://images.unsplash.com/photo-1589923188900-85dae523342b?w=400"},
+{id:22,name:"Cooking Oil 5L",price:1300,img:"https://images.unsplash.com/photo-1474979266404-7eaacb7d34fa?w=400"},
+{id:23,name:"Tea 500g",price:400,img:"https://images.unsplash.com/photo-1564890369478-c1b650e3f0b2?w=400"},
+{id:24,name:"Sugar 5kg",price:500,img:"https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=400"},
+{id:25,name:"Flour 10kg",price:1100,img:"https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=400"},
+{id:26,name:"Milk 1L",price:220,img:"https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400"},
+{id:27,name:"Bread",price:120,img:"https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400"},
+{id:28,name:"Eggs 12pcs",price:300,img:"https://images.unsplash.com/photo-1506976785307-8732e854ad03?w=400"},
+{id:29,name:"Chicken 1kg",price:600,img:"https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=400"},
+{id:30,name:"Table Lamp",price:900,img:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400"},
+{id:31,name:"Wall Clock",price:1100,img:"https://images.unsplash.com/photo-1507646227500-4d389b0012be?w=400"},
+{id:32,name:"Curtains 2pcs",price:2000,img:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400"},
+{id:33,name:"Sofa Cover",price:3500,img:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400"},
+{id:34,name:"Dinner Set",price:4000,img:"https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400"},
+{id:35,name:"Vacuum Cleaner",price:8500,img:"https://images.unsplash.com/photo-1558317374-067fb5f30001?w=400"},
+{id:36,name:"Lipstick Set",price:600,img:"https://images.unsplash.com/photo-1586495777744-4413f4c4f4b9?w=400"},
+{id:37,name:"Face Wash",price:350,img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400"},
+{id:38,name:"Body Lotion",price:500,img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400"},
+{id:39,name:"Hair Dryer",price:1800,img:"https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400"},
+{id:40,name:"Makeup Brush",price:700,img:"https://images.unsplash.com/photo-1596464716127-f5a447044a30?w=400"},
+{id:41,name:"Nail Polish",price:400,img:"https://images.unsplash.com/photo-1596464716127-f5a447044a30?w=400"},
+{id:42,name:"Formal Shirt",price:2000,img:"https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=400"},
+{id:43,name:"Abaya",price:2500,img:"https://images.unsplash.com/photo-1585483338906-3c7f4d4e4c2b?w=400"},
+{id:44,name:"USB Cable",price:200,img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400"},
+{id:45,name:"Power Bank",price:2800,img:"https://images.unsplash.com/photo-1609094869381-3c7f4d4e4c2b?w=400"},
+{id:46,name:"Earphones",price:800,img:"https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400"},
+{id:47,name:"Smart Band",price:1800,img:"https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=400"},
+{id:48,name:"Backpack",price:1600,img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400"},
+{id:49,name:"Water Bottle",price:300,img:"https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400"},
+{id:50,name:"Wallet Leather",price:799,img:"https://images.unsplash.com/photo-1627123424574-724758594e93?w=400"}
+];
+
+let cart = JSON.parse(localStorage.getItem('shuaibCart')) || [];
+
+function showProducts() {
+  const grid = document.getElementById('productGrid');
+  grid.innerHTML = '';
+  products.forEach(p => {
+    grid.innerHTML += `
+      <div class="product-card">
+        <img src="${p.img}" alt="${p.name}">
+        <h3>${p.name}</h3>
+        <div class="price">Rs. ${p.price.toLocaleString()}</div>
+        <button class="btn" onclick="addToCart(${p.id})">Add to Cart</button>
+      </div>
+    `;
+  });
+  updateCart();
+}
+
+function addToCart(id) {
+  const product = products.find(p => p.id === id);
+  const exist = cart.find(item => item.id === id);
+  if(exist) {
+    exist.qty++;
+  } else {
+    cart.push({...product, qty: 1});
+  }
+  saveCart();
+  alert(`${product.name} added to cart!`);
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(item => item.id !== id);
+  saveCart();
+}
+
+function saveCart() {
+  localStorage.setItem('shuaibCart', JSON.stringify(cart));
+  updateCart();
+}
+
+function updateCart() {
+  const totalItems = cart.reduce((a,b) => a + b.qty, 0);
+  document.getElementById('cartCount').innerText = totalItems;
+  
+  const cartItems = document.getElementById('cartItems');
+  cartItems.innerHTML = '';
+  let total = 0;
+  
+  if(cart.length === 0) {
+    cartItems.innerHTML = '<p style="text-align:center; color:#999;">Cart khali hai</p>';
+  }
+
+  cart.forEach(item => {
+    total += item.price * item.qty;
+    cartItems.innerHTML += `
+      <div class="cart-item">
+        <span>${item.name} x ${item.qty}</span>
+        <div>
+          <span>Rs. ${(item.price * item.qty).toLocaleString()}</span>
+          <button class="btn-remove" onclick="removeFromCart(${item.id})">X</button>
+        </div>
+      </div>
+    `;
+  });
+  document.getElementById('cartTotal').innerText = total.toLocaleString();
+}
+
+function showOrderForm() {
+  if(cart.length === 0) return alert("Cart khali hai! Pehle product add karo");
+  document.getElementById('overlay').classList.add('show');
+  document.getElementById('orderBox').classList.add('show');
+}
+
+function closeOrder() {
+  document.getElementById('overlay').classList.remove('show');
+  document.getElementById('orderBox').classList.remove('show');
+}
+
+function placeOrder() {
+  const name = document.getElementById('oName').value;
+  const phone = document.getElementById('oPhone').value;
+  const address = document.getElementById('oAddress').value;
+  if(!name || !phone || !address) return alert("Sab fields fill karo");
+  
+  const total = document.getElementById('cartTotal').innerText;
+  
+  const order = { name, phone, address, items: cart, total, date: new Date().toLocaleString() };
+  let orders = JSON.parse(localStorage.getItem('shuaibOrders')) || [];
+  orders.push(order);
+  localStorage.setItem('shuaibOrders', JSON.stringify(orders));
+
+  alert(`Order Placed! 🎉\nName: ${name}\nTotal: Rs.${total}\nCash on Delivery\nShuaib aap ko call karega`);
+  
+  cart = [];
+  saveCart();
+  document.getElementById('oName').value = '';
+  document.getElementById('oPhone').value = '';
+  document.getElementById('oAddress').value = '';
+  closeOrder();
+}
+
+showProducts(); // YE LINE ZARURI HAI
+</script>
+</body>
+</html>

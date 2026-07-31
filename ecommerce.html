@@ -30,15 +30,15 @@ header { background: #222; color: #fff; padding: 15px 20px; display: flex; justi
 .back { text-align: center; margin: 30px 0; }
 .back a { text-decoration: none; color: #333; font-weight: 700; }
 
-/* NAYA SLIDE CART DESIGN */
+/* LEFT SIDE CART */
 .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
 .overlay.show { display: block; }
 .cart-sidebar { 
-  position: fixed; top: 0; right: -420px; width: 100%; max-width: 400px; height: 100%; 
-  background: #fff; z-index: 1001; transition: 0.4s; box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+  position: fixed; top: 0; left: -420px; width: 100%; max-width: 400px; height: 100%; /* LEFT KIYA */
+  background: #fff; z-index: 1001; transition: 0.4s; box-shadow: 5px 0 20px rgba(0,0,0,0.2); /* SHADOW LEFT */
   display: flex; flex-direction: column;
 }
-.cart-sidebar.show { right: 0; }
+.cart-sidebar.show { left: 0; } /* LEFT 0 KIYA */
 .cart-header { padding: 20px; border-bottom: 2px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center; }
 .cart-header h3 { font-size: 20px; }
 .close-btn { font-size: 28px; cursor: pointer; color: #999; }
@@ -75,7 +75,7 @@ header { background: #222; color: #fff; padding: 15px 20px; display: flex; justi
   <a href="index.html">⬅️ Back to Portfolio</a>
 </div>
 
-<!-- NAYA CART SIDEBAR -->
+<!-- LEFT CART SIDEBAR -->
 <div class="overlay" id="overlay" onclick="closeOrder()"></div>
 <div class="cart-sidebar" id="cartSidebar">
   <div class="cart-header">

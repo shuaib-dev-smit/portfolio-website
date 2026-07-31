@@ -41,23 +41,6 @@
       letter-spacing: 2px; 
     }
     
-    .nav-right { display: flex; align-items: center; gap: 20px; }
-    .desktop-menu { display: flex; gap: 15px; }
-    .desktop-menu a { 
-      color: #fff; 
-      text-decoration: none; 
-      font-weight: 600; 
-      padding: 10px 18px; 
-      border-radius: 8px; 
-      transition: 0.3s; 
-      background: var(--glass);
-      border: 1px solid rgba(0,255,136,0.1);
-    }
-    .desktop-menu a:hover { 
-      background: linear-gradient(90deg, var(--green), var(--blue)); 
-      color: #000; 
-      transform: translateY(-2px);
-    }
     .btn-login {
       background: linear-gradient(90deg, var(--green), var(--blue));
       color: #000;
@@ -66,28 +49,28 @@
       border: none;
       font-weight: 700;
       cursor: pointer;
-      transition: 0.3s;
     }
+    .desktop-menu { display: none; }
+    @media(min-width: 900px){ .desktop-menu { display: flex; gap: 15px; } }
     
     section { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
     #home { text-align: center; padding-top: 180px; min-height: 100vh; }
     #home h1 { 
-      font-size: 56px; 
+      font-size: 42px; 
       font-weight: 800;
       background: linear-gradient(90deg, var(--green), var(--blue)); 
       -webkit-background-clip: text; 
       -webkit-text-fill-color: transparent; 
       margin-bottom: 20px; 
     }
-    #home p { font-size: 22px; color: #aaa; margin-bottom: 40px; }
+    #home p { font-size: 18px; color: #aaa; margin-bottom: 30px; }
     #home img { 
-      width: 220px; 
-      height: 220px; 
+      width: 180px; 
+      height: 180px; 
       border-radius: 50%; 
       border: 4px solid var(--green);
       object-fit: cover; 
-      box-shadow: 0 0 40px rgba(0,255,136,0.5); 
-      margin: 30px 0;
+      margin: 20px 0;
     }
     
     .btn { 
@@ -98,28 +81,26 @@
       text-decoration: none; 
       border-radius: 50px;
       font-weight: 700; 
-      transition: 0.3s; 
-      margin: 10px; 
-      font-size: 15px;
       border: none;
       cursor: pointer;
+      width: 100%;
     }
-    .btn-small { padding: 10px 20px; font-size: 14px; width: 100%; }
+    .btn-small { padding: 12px 20px; font-size: 15px; }
     
     h2 { 
-      font-size: 40px; 
+      font-size: 36px; 
       font-weight: 800;
       background: linear-gradient(90deg, var(--green), var(--blue)); 
       -webkit-background-clip: text; 
       -webkit-text-fill-color: transparent; 
-      margin-bottom: 50px; 
+      margin-bottom: 40px; 
       text-align: center; 
     }
     
     .project-grid { 
       display: grid; 
-      grid-template-columns: repeat(1, 1fr);
-      gap: 25px; 
+      grid-template-columns: 1fr;
+      gap: 20px; 
     }
     @media(min-width: 600px) { .project-grid { grid-template-columns: repeat(2, 1fr); } }
     @media(min-width: 1024px) { .project-grid { grid-template-columns: repeat(3, 1fr); } }
@@ -129,44 +110,43 @@
       padding: 25px; 
       border-radius: 20px; 
       border: 1px solid #333; 
-      transition: 0.4s; 
       text-align: center;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      min-height: 320px;
-      overflow: hidden;
+      min-height: 300px;
     }
-    .card:hover { border-color: var(--green); transform: translateY(-10px); }
-    .card h3 { color: var(--green); margin-bottom: 15px; font-size: 22px; font-weight: 700; }
+    .card h3 { color: var(--green); margin-bottom: 15px; font-size: 22px; }
     .card p { color: #aaa; margin-bottom: 20px; flex-grow: 1; }
 
+    /* MOBILE FIX - INPUT NECHE BUTTON NECHE */
     .app-container { 
       background: #0a0a0a; 
       padding: 15px; 
       border-radius: 15px; 
       border: 1px solid #333; 
       width: 100%;
-      box-sizing: border-box;
     }
     .app-input { 
       display: flex; 
-      gap: 8px; 
+      flex-direction: column; /* MOBILE ME NECHE NECHE */
+      gap: 10px; 
       margin-bottom: 15px; 
       width: 100%;
     }
+    @media(min-width: 400px){ 
+      .app-input { flex-direction: row; } /* BADE SCREEN PE SIDE BY SIDE */
+    }
     .app-input input { 
       flex: 1; 
-      padding: 10px; 
+      padding: 12px; 
       background: #1a1a1a; 
       border: 1px solid #333; 
       border-radius: 8px; 
       color: #fff; 
       outline: none;
-      min-width: 0;
-      font-size: 14px;
+      width: 100%;
     }
-    .todo-item { background: #1a1a1a; padding: 10px; margin-bottom: 8px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; }
+    .todo-item { background: #1a1a1a; padding: 10px; margin-bottom: 8px; border-radius: 8px; display: flex; justify-content: space-between; font-size: 14px; }
     .weather-result { text-align: center; padding: 15px 0; }
     .weather-result h3 { font-size: 28px; color: var(--green); }
 
@@ -174,55 +154,24 @@
       max-width: 500px;
       margin: 0 auto;
       background: #1a1a1a;
-      padding: 40px;
+      padding: 30px;
       border-radius: 20px;
       border: 2px solid var(--green);
     }
     .form-group { margin-bottom: 20px; }
     .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--green); }
-    .form-group input {
-      width: 100%;
-      padding: 14px;
-      background: #0a0a0a;
-      border: 1px solid #333;
-      border-radius: 10px;
-      color: #fff;
-      font-size: 16px;
-      outline: none;
-    }
-    .btn-gradient { background: linear-gradient(90deg, var(--green), var(--blue)); color: #000; border: none; padding: 14px; border-radius: 50px; cursor: pointer; font-weight: 700; width: 100%; font-size: 16px; margin-top: 10px; }
+    .form-group input { width: 100%; padding: 14px; background: #0a0a0a; border: 1px solid #333; border-radius: 10px; color: #fff; }
+    .btn-gradient { background: linear-gradient(90deg, var(--green), var(--blue)); color: #000; border: none; padding: 14px; border-radius: 50px; cursor: pointer; font-weight: 700; width: 100%; }
     .form-toggle { text-align: center; margin-top: 20px; color: #aaa; }
     .form-toggle span { color: var(--green); cursor: pointer; font-weight: 700; }
-
-    footer { 
-      text-align: center; 
-      padding: 35px 20px; 
-      background: linear-gradient(90deg, var(--green), var(--blue)); 
-      color: #000; 
-      font-weight: 700; 
-      font-size: 16px;
-    }
-    
-    @media(max-width: 900px) { 
-      .desktop-menu { display: none; }
-      #home h1 { font-size: 42px; }
-      h2 { font-size: 36px; }
-    }
+    footer { text-align: center; padding: 35px 20px; background: linear-gradient(90deg, var(--green), var(--blue)); color: #000; font-weight: 700; }
   </style>
 </head>
 <body>
   <header>
     <nav>
       <div class="logo">SHUAIB</div>
-      <div class="nav-right">
-        <div class="desktop-menu">
-          <a href="#home">🏠 Home</a>
-          <a href="#projects">💼 Projects</a>
-          <a href="#account">👤 Account</a>
-          <a href="#contact">📞 Contact</a>
-        </div>
-        <button class="btn-login" id="loginBtn" onclick="showAccount()">Login</button>
-      </div>
+      <button class="btn-login" id="loginBtn" onclick="showAccount()">Login</button>
     </nav>
   </header>
 
@@ -237,25 +186,16 @@
     <h2>My Projects</h2>
     <div class="project-grid">
       <div class="card">
-        <div>
-          <h3>💼 Portfolio Website</h3>
-          <p>Fully responsive portfolio website built with HTML5, CSS3 and JavaScript. Modern UI with animations.</p>
-        </div>
+        <div><h3>💼 Portfolio Website</h3><p>Fully responsive portfolio website built with HTML5, CSS3</p></div>
       </div>
 
       <div class="card">
-        <div>
-          <h3>🛍️ E-commerce Website</h3>
-          <p>Daraz style online store with 50+ products, cart, search and categories. Fully responsive.</p>
-        </div>
+        <div><h3>🛍️ E-commerce Website</h3><p>Daraz style online store with 50+ products</p></div>
         <a href="ecommerce.html" class="btn btn-small">Live Demo</a>
       </div>
 
       <div class="card">
-        <div>
-          <h3>🌤️ Weather App</h3>
-          <p>Check weather of any city. Demo version with random data.</p>
-        </div>
+        <div><h3>🌤️ Weather App</h3><p>Check weather of any city. Demo version</p></div>
         <button class="btn btn-small" onclick="showWeatherApp()">Open App</button>
         <div id="weatherApp" style="display:none; margin-top:15px;">
           <div class="app-container">
@@ -269,10 +209,7 @@
       </div>
 
       <div class="card">
-        <div>
-          <h3>✅ Todo App</h3>
-          <p>Add and manage your daily tasks. Data saves in browser.</p>
-        </div>
+        <div><h3>✅ Todo App</h3><p>Add and manage your daily tasks</p></div>
         <button class="btn btn-small" onclick="showTodoApp()">Open App</button>
         <div id="todoApp" style="display:none; margin-top:15px;">
           <div class="app-container">
@@ -309,7 +246,6 @@
 
       <div id="userDashboard" style="display:none;">
         <h3 style="text-align:center;">Welcome <span id="userNameDisplay"></span> 🎉</h3>
-        <p style="text-align:center; margin:15px 0;">Email: <span id="userEmailDisplay"></span></p>
         <a href="ecommerce.html" class="btn-gradient">Go to Store 🛍️</a>
         <button class="btn" style="width:100%; background:#ff4444; margin-top:10px;" onclick="logout()">Logout</button>
       </div>
@@ -330,119 +266,109 @@
   </footer>
 
   <script>
-    let isLoginMode = false;
+    let isLoginMode = false; 
     let todos = JSON.parse(localStorage.getItem('todos')) || [];
 
-    function toggleForm() {
-      isLoginMode = !isLoginMode;
-      document.getElementById('signupForm').style.display = isLoginMode ? 'none' : 'block';
-      document.getElementById('loginForm').style.display = isLoginMode ? 'block' : 'none';
+    function toggleForm() { 
+      isLoginMode = !isLoginMode; 
+      document.getElementById('signupForm').style.display = isLoginMode ? 'none' : 'block'; 
+      document.getElementById('loginForm').style.display = isLoginMode ? 'block' : 'none'; 
     }
 
-    function showAccount() {
-      if(localStorage.getItem('token')) {
-        if(confirm("Logout karna hai?")) logout();
-      } else {
-        document.getElementById('account').scrollIntoView({behavior: 'smooth'});
-      }
+    function showAccount() { 
+      if(localStorage.getItem('token')) { 
+        if(confirm("Logout karna hai?")) logout(); 
+      } else { 
+        document.getElementById('account').scrollIntoView({behavior: 'smooth'}); 
+      } 
     }
 
-    function showWeatherApp() {
-      let app = document.getElementById('weatherApp');
-      app.style.display = app.style.display === 'none' ? 'block' : 'none';
+    function showWeatherApp() { 
+      let app = document.getElementById('weatherApp'); 
+      app.style.display = app.style.display === 'none' ? 'block' : 'none'; 
     }
 
-    function getWeather() {
-      const city = document.getElementById('cityInput').value;
-      if(!city) return alert("City ka naam likho");
-      const temp = Math.floor(Math.random() * 20) + 20;
-      document.getElementById('weatherResult').innerHTML = `
-        <h3>${city}</h3>
-        <p style="font-size:40px;">${temp}°C</p>
-        <p>☀️ Sunny - Demo</p>
-      `;
+    function getWeather() { 
+      const city = document.getElementById('cityInput').value; 
+      if(!city) return alert("City ka naam likho"); 
+      const temp = Math.floor(Math.random() * 20) + 20; 
+      document.getElementById('weatherResult').innerHTML = `<h3>${city}</h3><p style="font-size:40px;">${temp}°C</p><p>☀️ Sunny - Demo</p>`; 
     }
 
-    function showTodoApp() {
-      let app = document.getElementById('todoApp');
-      app.style.display = app.style.display === 'none' ? 'block' : 'none';
-      renderTodos();
+    function showTodoApp() { 
+      let app = document.getElementById('todoApp'); 
+      app.style.display = app.style.display === 'none' ? 'block' : 'none'; 
+      renderTodos(); 
     }
 
-    function addTodo() {
-      const input = document.getElementById('todoInput');
-      if(input.value.trim() === '') return;
-      todos.push({text: input.value, done: false});
-      localStorage.setItem('todos', JSON.stringify(todos));
-      input.value = '';
-      renderTodos();
+    function addTodo() { 
+      const input = document.getElementById('todoInput'); 
+      if(input.value.trim() === '') return; 
+      todos.push({text: input.value}); 
+      localStorage.setItem('todos', JSON.stringify(todos)); 
+      input.value = ''; 
+      renderTodos(); 
     }
 
-    function deleteTodo(index) {
-      todos.splice(index, 1);
-      localStorage.setItem('todos', JSON.stringify(todos));
-      renderTodos();
+    function deleteTodo(index) { 
+      todos.splice(index, 1); 
+      localStorage.setItem('todos', JSON.stringify(todos)); 
+      renderTodos(); 
     }
 
-    function renderTodos() {
-      const list = document.getElementById('todoList');
-      list.innerHTML = '';
-      todos.forEach((todo, index) => {
-        list.innerHTML += `
-          <div class="todo-item">
-            <span>${todo.text}</span>
-            <button onclick="deleteTodo(${index})" style="background:red; color:#fff; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;">X</button>
-          </div>
-        `;
-      });
+    function renderTodos() { 
+      const list = document.getElementById('todoList'); 
+      list.innerHTML = ''; 
+      todos.forEach((todo, index) => { 
+        list.innerHTML += `<div class="todo-item"><span>${todo.text}</span><button onclick="deleteTodo(${index})" style="background:red; color:#fff; border:none; padding:5px 10px; border-radius:5px;">X</button></div>`; 
+      }); 
     }
 
     function signupUser(){
-      const name = document.getElementById('userName').value.trim();
-      const email = document.getElementById('userEmail').value.trim();
-      const password = document.getElementById('userPassword').value;
-      if(!name || !email || password.length < 6) return alert("⚠️ Sahi data dalo");
-      let users = JSON.parse(localStorage.getItem('users')) || [];
-      if(users.find(u => u.email === email)) return alert("⚠️ Email pehle se hai");
-      users.push({name, email, password});
-      localStorage.setItem('users', JSON.stringify(users));
-      alert("✅ Account ban gaya!");
-      toggleForm();
+      const name = document.getElementById('userName').value.trim(); 
+      const email = document.getElementById('userEmail').value.trim(); 
+      const password = document.getElementById('userPassword').value; 
+      if(!name || !email || password.length < 6) return alert("⚠️ Sahi data dalo"); 
+      let users = JSON.parse(localStorage.getItem('users')) || []; 
+      if(users.find(u => u.email === email)) return alert("⚠️ Email pehle se hai"); 
+      users.push({name, email, password}); 
+      localStorage.setItem('users', JSON.stringify(users)); 
+      alert("✅ Account ban gaya!"); 
+      toggleForm(); 
     }
 
     function loginUser(){
-      const email = document.getElementById('loginEmail').value.trim();
-      const password = document.getElementById('loginPassword').value;
-      let users = JSON.parse(localStorage.getItem('users')) || [];
-      let user = users.find(u => u.email === email && u.password === password);
+      const email = document.getElementById('loginEmail').value.trim(); 
+      const password = document.getElementById('loginPassword').value; 
+      let users = JSON.parse(localStorage.getItem('users')) || []; 
+      let user = users.find(u => u.email === email && u.password === password); 
       if(user){
-        localStorage.setItem('token', 'demo_token_2026');
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        showDashboard(user);
-        alert("✅ Login Successful!");
-      } else { alert("❌ Wrong Email ya Password"); }
+        localStorage.setItem('token', 'demo_token_2026'); 
+        localStorage.setItem('currentUser', JSON.stringify(user)); 
+        showDashboard(user); 
+        alert("✅ Login Successful!"); 
+      } else { alert("❌ Wrong Email ya Password"); } 
     }
 
-    function showDashboard(user) {
-      document.getElementById('signupForm').style.display = 'none';
-      document.getElementById('loginForm').style.display = 'none';
-      document.getElementById('userDashboard').style.display = 'block';
-      document.getElementById('userNameDisplay').innerText = user.name;
-      document.getElementById('userEmailDisplay').innerText = user.email;
-      document.getElementById('loginBtn').innerText = 'Logout';
+    function showDashboard(user) { 
+      document.getElementById('signupForm').style.display = 'none'; 
+      document.getElementById('loginForm').style.display = 'none'; 
+      document.getElementById('userDashboard').style.display = 'block'; 
+      document.getElementById('userNameDisplay').innerText = user.name; 
+      document.getElementById('loginBtn').innerText = 'Logout'; 
     }
 
-    function logout() {
-      localStorage.removeItem('token');
-      localStorage.removeItem('currentUser');
-      document.getElementById('userDashboard').style.display = 'none';
-      document.getElementById('signupForm').style.display = 'block';
-      document.getElementById('loginBtn').innerText = 'Login';
+    function logout() { 
+      localStorage.removeItem('token'); 
+      localStorage.removeItem('currentUser'); 
+      document.getElementById('userDashboard').style.display = 'none'; 
+      document.getElementById('signupForm').style.display = 'block'; 
+      document.getElementById('loginBtn').innerText = 'Login'; 
     }
 
-    window.onload = () => {
-      const savedUser = JSON.parse(localStorage.getItem('currentUser'));
-      if(localStorage.getItem('token') && savedUser) showDashboard(savedUser);
+    window.onload = () => { 
+      const savedUser = JSON.parse(localStorage.getItem('currentUser')); 
+      if(localStorage.getItem('token') && savedUser) showDashboard(savedUser); 
     }
   </script>
 </body>

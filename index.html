@@ -436,7 +436,7 @@
   </footer>
 
   <script>
-    // ACCOUNT SYSTEM
+    // ACCOUNT SYSTEM - LOCALSTORAGE
     function signup() {
       const name = document.getElementById('signupName').value;
       const email = document.getElementById('signupEmail').value;
@@ -464,8 +464,9 @@
     function logout() {
       localStorage.removeItem('isLoggedIn');
       document.getElementById('userDashboard').style.display = 'none';
-      document.getElementById('loginForm').style.display = 'block';
-      document.getElementById('loginBtn').innerText = 'Login';
+      document.getElementById('signupForm').style.display = 'block'; // FIXED
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('loginBtn').innerText = 'Login'; // FIXED
     }
 
     function showDashboard(user) {

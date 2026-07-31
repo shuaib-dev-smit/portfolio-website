@@ -185,7 +185,7 @@
     
     .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
     .card { 
-      background: #1a1a1a; /* FIXED */
+      background: #1a1a1a; 
       padding: 35px; 
       border-radius: 20px; 
       border: 1px solid #333; 
@@ -343,7 +343,8 @@
       <div class="skill"><div class="skill-name"><span>HTML5</span><span>90%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div></div>
       <div class="skill"><div class="skill-name"><span>CSS3</span><span>85%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div></div>
       <div class="skill"><div class="skill-name"><span>JavaScript</span><span>70%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 70%;"></div></div></div>
-      <div class="skill"><div class="skill-name"><span>Firebase</span><span>75%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 75%;"></div></div></div>
+      <!-- FIREBASE DELETE, GIT & GITHUB ADDED -->
+      <div class="skill"><div class="skill-name"><span>Git & GitHub</span><span>80%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div></div>
     </div>
   </section>
 
@@ -436,7 +437,7 @@
   </footer>
 
   <script>
-    // ACCOUNT SYSTEM - LOCALSTORAGE
+    // ACCOUNT SYSTEM
     function signup() {
       const name = document.getElementById('signupName').value;
       const email = document.getElementById('signupEmail').value;
@@ -464,9 +465,8 @@
     function logout() {
       localStorage.removeItem('isLoggedIn');
       document.getElementById('userDashboard').style.display = 'none';
-      document.getElementById('signupForm').style.display = 'block'; // FIXED
-      document.getElementById('loginForm').style.display = 'none';
-      document.getElementById('loginBtn').innerText = 'Login'; // FIXED
+      document.getElementById('loginForm').style.display = 'block';
+      document.getElementById('loginBtn').innerText = 'Login';
     }
 
     function showDashboard(user) {
@@ -495,7 +495,7 @@
       if(localStorage.getItem('isLoggedIn') === 'true' && savedUser) showDashboard(savedUser);
     }
 
-    // SHUAIB AI BOT - FULL SMART
+    // SHUAIB AI BOT
     const messagesDiv = document.getElementById('messages');
     const messageInput = document.getElementById('messageInput');
     const sendBtn = document.getElementById('sendBtn');
@@ -506,7 +506,7 @@
       location: "Karachi, Sindh, Pakistan",
       email: "shuaibahmedsolangi5@gmail.com",
       phone: "+92 310 7389936",
-      skills: ["HTML5 - 90%", "CSS3 - 85%", "JavaScript - 70%", "Firebase - 75%"],
+      skills: ["HTML5 - 90%", "CSS3 - 85%", "JavaScript - 70%", "Git & GitHub - 80%"],
       projects: [
         "Portfolio Website: Fully responsive HTML5, CSS3",
         "E-commerce Website: 50+ Products, Cart, Order Form",
@@ -521,26 +521,13 @@
       if (lower.includes("hi") || lower.includes("hello")) {
         return "Hello! Main SHUAIB AI hun 🤖. Main coding, portfolio, aur kisi bhi topic pe help kar sakta hun!";
       }
-      if (lower.includes("shuaib") || lower.includes("about")) {
-        return `Shuaib Ahmed Solangi ${websiteData.role} hain 🚀.\nLocation: ${websiteData.location}\nGoal: Modern responsive websites banana`;
-      }
       if (lower.includes("skill")) {
         return `Shuaib ki Skills:\n• ${websiteData.skills.join("\n• ")}`;
       }
       if (lower.includes("project")) {
         return `Shuaib ke Projects:\n• ${websiteData.projects.join("\n• ")}`;
       }
-      if (lower.includes("contact") || lower.includes("number")) {
-        return `Contact:\n📞 ${websiteData.phone}\n📧 ${websiteData.email}\n📍 ${websiteData.location}`;
-      }
-      if (lower.includes("login") || lower.includes("account")) {
-        return "Aap Account section me ja kar Sign Up / Login kar sakte hain. Data aapke browser me save hoga.";
-      }
-      if (lower.includes("ecommerce")) {
-        return "Shuaib ka E-commerce project Daraz jesa hai. 50+ products, cart, search aur order form hai.";
-      }
-
-      return `Main SHUAIB AI hun! "skills", "projects", "account" ya koi bhi sawal poocho 😊`;
+      return `Main SHUAIB AI hun! "skills", "projects" poocho 😊`;
     }
 
     function addMessage(text, name, isBot = false) {

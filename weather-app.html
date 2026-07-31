@@ -1,5 +1,137 @@
-<div class="card">
-  <h3>🌤️ Weather App</h3>
-  <p>Real-time weather app using OpenWeather API. Shows temperature, humidity and wind speed. Built with HTML, CSS, JavaScript.</p>
-  <a href="weather-app.html" class="btn" style="padding:10px 20px; font-size:14px;">Live Demo</a>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App - Shuaib</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body {
+      background: linear-gradient(135deg, #0077ff, #00ff88);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .weather-box {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 25px;
+      padding: 40px 30px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
+    .weather-box h1 { margin-bottom: 20px; font-size: 28px; }
+    .search {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    .search input {
+      flex: 1;
+      padding: 14px;
+      border-radius: 50px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      color: #000;
+    }
+    .search button {
+      padding: 14px 20px;
+      border-radius: 50px;
+      border: none;
+      background: #00ff88;
+      color: #000;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .search button:hover { transform: scale(1.05); }
+    .weather-info { display: none; }
+    .weather-info img { width: 120px; }
+    .temp { font-size: 60px; font-weight: 800; margin: 10px 0; }
+    .city { font-size: 26px; font-weight: 700; }
+    .details { display: flex; justify-content: space-between; margin-top: 30px; }
+    .col { text-align: center; }
+    .col p { font-size: 18px; margin-top: 5px; }
+    .error { color: #ffdddd; font-size: 18px; margin-top: 20px; display: none; }
+    .back-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 25px;
+      background: #fff;
+      color: #000;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="weather-box">
+    <h1>🌤️ Weather App</h1>
+    
+    <div class="search">
+      <input type="text" id="cityInput" placeholder="Enter city name" value="Karachi">
+      <button onclick="getWeather()">Search</button>
+    </div>
+    
+    <div class="error" id="error">City not found!</div>
+    
+    <div class="weather-info" id="weatherInfo">
+      <img id="weatherIcon" src="" alt="Weather Icon">
+      <div class="temp" id="temp">25°C</div>
+      <div class="city" id="city">Karachi</div>
+      
+      <div class="details">
+        <div class="col">
+          <p>💧</p>
+          <p id="humidity">50%</p>
+          <p>Humidity</p>
+        </div>
+        <div class="col">
+          <p>💨</p>
+          <p id="wind">10 km/h</p>
+          <p>Wind Speed</p>
+        </div>
+      </div>
+    </div>
+    
+    <a href="index.html" class="back-btn">⬅️ Back to Portfolio</a>
+  </div>
+
+  <script>
+    const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+    const apiKey = "468087bee705978a34244d019f793a55"; // TUMHARI KEY
+
+    async function getWeather() {
+      let city = document.getElementById("cityInput").value;
+      let response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+      
+      if(response.status == 404){
+        document.getElementById("error").style.display = "block";
+        document.getElementById("weatherInfo").style.display = "none";
+      } else {
+        let data = await response.json();
+        
+        document.getElementById("city").innerHTML = data.name;
+        document.getElementById("temp").innerHTML = Math.round(data.main.temp) + "°C";
+        document.getElementById("humidity").innerHTML = data.main.humidity + "%";
+        document.getElementById("wind").innerHTML = data.wind.speed + " km/h";
+        document.getElementById("weatherIcon").src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+        
+        document.getElementById("weatherInfo").style.display = "block";
+        document.getElementById("error").style.display = "none";
+      }
+    }
+    
+    // Page load pe Karachi ka weather
+    window.onload = getWeather;
+  </script>
+</body>
+</html>

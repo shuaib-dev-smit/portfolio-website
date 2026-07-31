@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App - Shuaib</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body { background: linear-gradient(135deg, #ff6b6b, #feca57); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+   .todo-box { background: #fff; border-radius: 20px; padding: 30px; width: 100%; max-width: 500px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+   .todo-box h1 { text-align: center; margin-bottom: 20px; color: #333; }
+   .add-task { display: flex; gap: 10px; margin-bottom: 20px; }
+   .add-task input { flex: 1; padding: 12px; border: 2px solid #ddd; border-radius: 10px; font-size: 16px; }
+   .add-task button { padding: 12px 20px; border: none; background: #ff6b6b; color: #fff; border-radius: 10px; font-weight: 700; cursor: pointer; }
+   .task { display: flex; align-items: center; justify-content: space-between; padding: 12px; background: #f8f8f8; border-radius: 10px; margin-bottom: 10px; }
+   .task.completed p { text-decoration: line-through; color: #999; }
+   .task p { flex: 1; margin: 0 10px; }
+   .task button { background: none; border: none; font-size: 20px; cursor: pointer; margin-left: 5px; }
+   .back-btn { display: block; text-align: center; margin-top: 20px; color: #333; text-decoration: none; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="todo-box">
+    <h1>✅ Todo List App</h1>
+    <div class="add-task">
+      <input type="text" id="taskInput" placeholder="Add a new task...">
+      <button onclick="addTask()">Add</button>
+    </div>
+    <div id="taskList"></div>
+    <a href="index.html" class="back-btn">⬅️ Back to Portfolio</a>
+  </div>
+
+  <script>
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    
+    function renderTasks() {
+      let taskList = document.getElementById('taskList');
+      taskList.innerHTML = '';
+      tasks.forEach((task, index) => {
+        taskList.innerHTML += `
+          <div class="task ${task.completed? 'completed' : ''}">
+            <button onclick="toggleTask(${index})">${task.completed? '✅' : '⭕'}</button>
+            <p>${task.text}</p>
+            <button onclick="deleteTask(${index})">🗑️</button>
+          </div>
+        `;
+      });
+    }
+    
+    function addTask() {
+      let input = document.getElementById('taskInput');
+      if(input.value.trim()!== '') {
+        tasks.push({ text: input.value, completed: false });
+        input.value = '';
+        saveTasks();
+        renderTasks();
+      }
+    }
+    
+    function toggleTask(index) {
+      tasks[index].completed =!tasks[index].completed;
+      saveTasks();
+      renderTasks();
+    }
+    
+    function deleteTask(index) {
+      tasks.splice(index, 1);
+      saveTasks();
+      renderTasks();
+    }
+    
+    function saveTasks() {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+    
+    renderTasks();
+  </script>
+</body>
+</html>

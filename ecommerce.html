@@ -12,26 +12,33 @@ header { background: #222; color: #fff; padding: 15px 20px; display: flex; justi
 .search-box { display: none; }
 .search-box input { width: 100%; padding: 12px 15px; border-radius: 8px; border: none; font-size: 16px; outline: none; }
 .header-right { display: flex; gap: 10px; align-items: center; }
-.cart { font-size: 16px; font-weight: 600; cursor: pointer; background: #00a63e; padding: 8px 15px; border-radius: 20px; white-space: nowrap; }
-.account-btn { background: #ff4444; color: #fff; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: 700; border: none; white-space: nowrap; }
+.cart { font-size: 16px; font-weight: 600; cursor: pointer; background: #00a63e; padding: 8px 15px; border-radius: 20px; white-space: nowrap; transition: 0.3s; }
+.cart:hover { background: #008a33; }
+.account-btn { background: #ff4444; color: #fff; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: 700; border: none; white-space: nowrap; transition: 0.3s; }
+.account-btn:hover { background: #cc0000; }
 
 @media(max-width: 768px){ .search-box { display: block; order: 3; width: 100%; margin: 10px 0 0 0; } }
 @media(min-width: 769px){ .search-box { display: block; flex: 1; max-width: 500px; margin: 0 15px; } }
 
 .container { max-width: 1200px; margin: 20px auto; padding: 0 15px 100px 15px; }
 .hero { background: linear-gradient(90deg, #00a63e, #008a33); color: #fff; padding: 40px 20px; text-align: center; border-radius: 12px; margin-bottom: 20px; }
+.hero h1 { font-size: 32px; margin-bottom: 10px; }
 .categories { display: flex; gap: 10px; padding: 15px 0; justify-content: center; flex-wrap: wrap; }
-.categories button { padding: 8px 16px; border: 2px solid #00a63e; background: #fff; color: #00a63e; border-radius: 20px; cursor: pointer; font-weight: 700; }
+.categories button { padding: 8px 16px; border: 2px solid #00a63e; background: #fff; color: #00a63e; border-radius: 20px; cursor: pointer; font-weight: 700; transition: 0.3s; }
 .categories button.active { background: #00a63e; color: #fff; }
+.categories button:hover { background: #00a63e; color: #fff; }
 .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
 @media(min-width: 768px) { .product-grid { grid-template-columns: repeat(4, 1fr); } }
 @media(min-width: 1024px) { .product-grid { grid-template-columns: repeat(5, 1fr); } }
-.product-card { background: #fff; border-radius: 12px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; position: relative; }
+.product-card { background: #fff; border-radius: 12px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; position: relative; transition: 0.3s; }
+.product-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 .product-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
+.product-card h3 { font-size: 14px; margin-bottom: 5px; height: 40px; overflow: hidden; }
 .price { color: #00a63e; font-size: 16px; font-weight: 700; }
-.btn { background: #00a63e; color: #fff; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: 700; width: 100%; margin-top: 8px; }
+.btn { background: #00a63e; color: #fff; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: 700; width: 100%; margin-top: 8px; transition: 0.3s; }
+.btn:hover { background: #008a33; }
 footer { background: #222; color: #fff; padding: 30px 20px; margin-top: 40px; text-align: center; }
-.whatsapp-float { position: fixed; bottom: 70px; right: 20px; background: #25D366; color: #fff; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; text-decoration: none; }
+.whatsapp-float { position: fixed; bottom: 70px; right: 20px; background: #25D366; color: #fff; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; text-decoration: none; box-shadow: 0 4px 12px rgba(37,211,102,0.4); }
 </style>
 </head>
 <body>
@@ -115,24 +122,34 @@ const products = [
 {id:50,name:"Wallet Leather",price:799,img:"https://images.unsplash.com/photo-1627123424574-724758594e93?w=400",category:"Clothes"}
 ];
 
-let cart = []; let currentCategory = 'all';
+let cart = []; 
+let currentCategory = 'all';
 let currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-// CHECK LOGIN
+// CHECK LOGIN ON LOAD
 window.onload = function(){
   if(!localStorage.getItem('token')){
-    alert("Pehle Login karo");
+    alert("⚠️ Pehle Login karo");
     window.location.href = "index.html";
     return;
   }
-  document.getElementById('accountBtn').innerText = "Logout - " + (currentUser.name || currentUser.phone);
+  let userName = currentUser ? (currentUser.name || currentUser.phone) : "User";
+  document.getElementById('accountBtn').innerText = "Logout - " + userName;
   showProducts();
+  updateCartCount();
 }
 
 function showProducts(filterProducts = products) {
-  const grid = document.getElementById('productGrid'); grid.innerHTML = '';
+  const grid = document.getElementById('productGrid'); 
+  grid.innerHTML = '';
   filterProducts.forEach(p => {
-    grid.innerHTML += `<div class="product-card"><img src="${p.img}"><h3>${p.name}</h3><div class="price">Rs. ${p.price.toLocaleString()}</div><button class="btn" onclick="addToCart(${p.id})">Add to Cart</button></div>`;
+    grid.innerHTML += `
+    <div class="product-card">
+      <img src="${p.img}" alt="${p.name}">
+      <h3>${p.name}</h3>
+      <div class="price">Rs. ${p.price.toLocaleString()}</div>
+      <button class="btn" onclick="addToCart(${p.id})">Add to Cart</button>
+    </div>`;
   });
 }
 
@@ -151,9 +168,28 @@ document.getElementById('searchInput').addEventListener('keyup', function(){
   showProducts(filtered);
 });
 
-function addToCart(id) { const product = products.find(p => p.id === id); cart.push(product); document.getElementById('cartCount').innerText = cart.length; alert(product.name + " added!"); }
-function showOrderForm() { alert("Cart: " + cart.length + " items"); }
-function logout(){ localStorage.clear(); window.location.href = "index.html"; }
+function addToCart(id) { 
+  const product = products.find(p => p.id === id); 
+  cart.push(product); 
+  updateCartCount();
+  alert("✅ " + product.name + " added to cart!"); 
+}
+
+function updateCartCount(){
+  document.getElementById('cartCount').innerText = cart.length;
+}
+
+function showOrderForm() { 
+  if(cart.length === 0) return alert("Cart khali hai!");
+  let total = cart.reduce((sum, item) => sum + item.price, 0);
+  alert(`Cart: ${cart.length} items\nTotal: Rs. ${total.toLocaleString()}\n\nOrder ke liye WhatsApp karein: 03107389936`);
+}
+
+function logout(){ 
+  localStorage.clear(); 
+  alert("Logout ho gaye");
+  window.location.href = "index.html"; 
+}
 </script>
 </body>
 </html>

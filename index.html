@@ -70,7 +70,7 @@
     }
     .btn-login:hover { transform: scale(1.05); }
     
-    section { padding: 100px 20px; max-width: 1100px; margin: 0 auto; }
+    section { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
     #home { text-align: center; padding-top: 180px; min-height: 100vh; }
     
     #home h1 { 
@@ -95,7 +95,7 @@
     
     .btn { 
       display: inline-block; 
-      padding: 16px 40px; 
+      padding: 14px 35px; 
       background: linear-gradient(90deg, var(--green), var(--blue)); 
       color: #000; 
       text-decoration: none; 
@@ -103,12 +103,12 @@
       font-weight: 700; 
       transition: 0.3s; 
       margin: 10px; 
-      font-size: 16px;
+      font-size: 15px;
       border: none;
       cursor: pointer;
     }
     .btn:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,255,136,0.4); }
-    .btn-small { padding: 10px 20px; font-size: 14px; }
+    .btn-small { padding: 10px 20px; font-size: 14px; width: 100%; }
     
     h2 { 
       font-size: 40px; 
@@ -120,27 +120,44 @@
       text-align: center; 
     }
     
-    .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+    /* RESPONSIVE GRID - SIDE BY SIDE */
+    .project-grid { 
+      display: grid; 
+      grid-template-columns: repeat(1, 1fr); /* Mobile: 1 */
+      gap: 25px; 
+    }
+    @media(min-width: 600px) { 
+      .project-grid { grid-template-columns: repeat(2, 1fr); } /* Tablet: 2 */
+    }
+    @media(min-width: 1024px) { 
+      .project-grid { grid-template-columns: repeat(3, 1fr); } /* Desktop: 3 */
+    }
+
     .card { 
       background: #1a1a1a; 
-      padding: 35px; 
+      padding: 30px 25px; 
       border-radius: 20px; 
       border: 1px solid #333; 
       transition: 0.4s; 
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 320px;
     }
-    .card:hover { border-color: var(--green); transform: translateY(-15px); }
-    .card h3 { color: var(--green); margin-bottom: 15px; font-size: 24px; font-weight: 700; }
+    .card:hover { border-color: var(--green); transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,255,136,0.2); }
+    .card h3 { color: var(--green); margin-bottom: 15px; font-size: 22px; font-weight: 700; }
+    .card p { color: #aaa; margin-bottom: 20px; flex-grow: 1; }
 
     /* APP STYLES */
-    .app-container { max-width: 600px; margin: 0 auto; background: #1a1a1a; padding: 30px; border-radius: 20px; border: 2px solid var(--green); }
-    .app-input { display: flex; gap: 10px; margin-bottom: 20px; }
-    .app-input input { flex: 1; padding: 12px; background: #0a0a0a; border: 1px solid #333; border-radius: 10px; color: #fff; }
-    .todo-item { background: #0a0a0a; padding: 12px; margin-bottom: 10px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
-    .weather-result { text-align: center; padding: 20px; }
-    .weather-result h3 { font-size: 32px; color: var(--green); }
+    .app-container { background: #0a0a0a; padding: 20px; border-radius: 15px; border: 1px solid #333; }
+    .app-input { display: flex; gap: 10px; margin-bottom: 15px; }
+    .app-input input { flex: 1; padding: 10px; background: #1a1a1a; border: 1px solid #333; border-radius: 8px; color: #fff; outline: none; }
+    .todo-item { background: #1a1a1a; padding: 10px; margin-bottom: 8px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; }
+    .weather-result { text-align: center; padding: 15px 0; }
+    .weather-result h3 { font-size: 28px; color: var(--green); }
 
-    /* SIMPLE FORM */
+    /* FORM */
     .form-container {
       max-width: 500px;
       margin: 0 auto;
@@ -212,21 +229,27 @@
     <h2>My Projects</h2>
     <div class="project-grid">
       <div class="card">
-        <h3>Portfolio Website</h3>
-        <p>Fully responsive portfolio website built with HTML5, CSS3</p>
+        <div>
+          <h3>💼 Portfolio Website</h3>
+          <p>Fully responsive portfolio website built with HTML5, CSS3 and JavaScript. Modern UI with animations.</p>
+        </div>
       </div>
 
       <div class="card">
-        <h3>🛍️ E-commerce Website</h3>
-        <p>Daraz style online store with 50+ products</p>
+        <div>
+          <h3>🛍️ E-commerce Website</h3>
+          <p>Daraz style online store with 50+ products, cart, search and categories. Fully responsive.</p>
+        </div>
         <a href="ecommerce.html" class="btn btn-small">Live Demo</a>
       </div>
 
       <div class="card">
-        <h3>🌤️ Weather App</h3>
-        <p>Check weather of any city</p>
+        <div>
+          <h3>🌤️ Weather App</h3>
+          <p>Check weather of any city. Demo version with random data.</p>
+        </div>
         <button class="btn btn-small" onclick="showWeatherApp()">Open App</button>
-        <div id="weatherApp" style="display:none; margin-top:20px;">
+        <div id="weatherApp" style="display:none; margin-top:15px;">
           <div class="app-container">
             <div class="app-input">
               <input type="text" id="cityInput" placeholder="Enter city name">
@@ -238,10 +261,12 @@
       </div>
 
       <div class="card">
-        <h3>✅ Todo App</h3>
-        <p>Add and manage your daily tasks</p>
+        <div>
+          <h3>✅ Todo App</h3>
+          <p>Add and manage your daily tasks. Data saves in browser.</p>
+        </div>
         <button class="btn btn-small" onclick="showTodoApp()">Open App</button>
-        <div id="todoApp" style="display:none; margin-top:20px;">
+        <div id="todoApp" style="display:none; margin-top:15px;">
           <div class="app-container">
             <div class="app-input">
               <input type="text" id="todoInput" placeholder="Add new task">
@@ -254,7 +279,6 @@
     </div>
   </section>
 
-  <!-- SIMPLE ACCOUNT SECTION -->
   <section id="account">
     <h2>My Account 👤</h2>
     <div class="form-container">
@@ -330,30 +354,25 @@
       }
     }
 
-    // WEATHER APP - DEMO DATA
     function showWeatherApp() {
-      document.getElementById('weatherApp').style.display = 
-        document.getElementById('weatherApp').style.display === 'none' ? 'block' : 'none';
+      let app = document.getElementById('weatherApp');
+      app.style.display = app.style.display === 'none' ? 'block' : 'none';
     }
 
     function getWeather() {
       const city = document.getElementById('cityInput').value;
       if(!city) return alert("City ka naam likho");
-      
-      // DEMO WEATHER - API KEY NAHI HAI TO FAKE DATA
       const temp = Math.floor(Math.random() * 20) + 20;
       document.getElementById('weatherResult').innerHTML = `
         <h3>${city}</h3>
-        <p style="font-size:48px;">${temp}°C</p>
-        <p>☀️ Sunny - Demo Weather</p>
-        <p style="font-size:12px; color:#aaa;">Note: Ye demo data hai. Real API ke liye key chahiye</p>
+        <p style="font-size:40px;">${temp}°C</p>
+        <p>☀️ Sunny - Demo</p>
       `;
     }
 
-    // TODO APP
     function showTodoApp() {
-      document.getElementById('todoApp').style.display = 
-        document.getElementById('todoApp').style.display === 'none' ? 'block' : 'none';
+      let app = document.getElementById('todoApp');
+      app.style.display = app.style.display === 'none' ? 'block' : 'none';
       renderTodos();
     }
 
@@ -385,43 +404,30 @@
       });
     }
 
-    // AUTH FUNCTIONS
     function signupUser(){
       const name = document.getElementById('userName').value.trim();
       const email = document.getElementById('userEmail').value.trim();
       const password = document.getElementById('userPassword').value;
-
-      if(!name || !email || password.length < 6) return alert("⚠️ Sahi data dalo. Password 6 characters ka ho");
-
+      if(!name || !email || password.length < 6) return alert("⚠️ Sahi data dalo");
       let users = JSON.parse(localStorage.getItem('users')) || [];
-      if(users.find(u => u.email === email)) return alert("⚠️ Ye Email pehle se registered hai");
-
+      if(users.find(u => u.email === email)) return alert("⚠️ Email pehle se hai");
       users.push({name, email, password});
       localStorage.setItem('users', JSON.stringify(users));
-      alert("✅ Account ban gaya! Ab Login karo");
-      document.getElementById('userName').value = '';
-      document.getElementById('userEmail').value = '';
-      document.getElementById('userPassword').value = '';
+      alert("✅ Account ban gaya!");
       toggleForm();
     }
 
     function loginUser(){
       const email = document.getElementById('loginEmail').value.trim();
       const password = document.getElementById('loginPassword').value;
-
       let users = JSON.parse(localStorage.getItem('users')) || [];
       let user = users.find(u => u.email === email && u.password === password);
-      
       if(user){
         localStorage.setItem('token', 'demo_token_2026');
         localStorage.setItem('currentUser', JSON.stringify(user));
         showDashboard(user);
         alert("✅ Login Successful!");
-        document.getElementById('loginEmail').value = '';
-        document.getElementById('loginPassword').value = '';
-      } else { 
-        alert("❌ Wrong Email ya Password"); 
-      }
+      } else { alert("❌ Wrong Email ya Password"); }
     }
 
     function showDashboard(user) {
@@ -439,7 +445,6 @@
       document.getElementById('userDashboard').style.display = 'none';
       document.getElementById('signupForm').style.display = 'block';
       document.getElementById('loginBtn').innerText = 'Login';
-      alert("Logout ho gaye");
     }
 
     window.onload = () => {
@@ -448,4 +453,4 @@
     }
   </script>
 </body>
-</html>
+            </html>

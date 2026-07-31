@@ -68,11 +68,9 @@
       cursor: pointer;
       transition: 0.3s;
     }
-    .btn-login:hover { transform: scale(1.05); }
     
     section { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
     #home { text-align: center; padding-top: 180px; min-height: 100vh; }
-    
     #home h1 { 
       font-size: 56px; 
       font-weight: 800;
@@ -82,8 +80,6 @@
       margin-bottom: 20px; 
     }
     #home p { font-size: 22px; color: #aaa; margin-bottom: 40px; }
-    
-    .img-wrapper { position: relative; display: inline-block; margin: 30px 0; }
     #home img { 
       width: 220px; 
       height: 220px; 
@@ -91,6 +87,7 @@
       border: 4px solid var(--green);
       object-fit: cover; 
       box-shadow: 0 0 40px rgba(0,255,136,0.5); 
+      margin: 30px 0;
     }
     
     .btn { 
@@ -107,7 +104,6 @@
       border: none;
       cursor: pointer;
     }
-    .btn:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,255,136,0.4); }
     .btn-small { padding: 10px 20px; font-size: 14px; width: 100%; }
     
     h2 { 
@@ -120,22 +116,17 @@
       text-align: center; 
     }
     
-    /* RESPONSIVE GRID - SIDE BY SIDE */
     .project-grid { 
       display: grid; 
-      grid-template-columns: repeat(1, 1fr); /* Mobile: 1 */
+      grid-template-columns: repeat(1, 1fr);
       gap: 25px; 
     }
-    @media(min-width: 600px) { 
-      .project-grid { grid-template-columns: repeat(2, 1fr); } /* Tablet: 2 */
-    }
-    @media(min-width: 1024px) { 
-      .project-grid { grid-template-columns: repeat(3, 1fr); } /* Desktop: 3 */
-    }
+    @media(min-width: 600px) { .project-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(min-width: 1024px) { .project-grid { grid-template-columns: repeat(3, 1fr); } }
 
     .card { 
       background: #1a1a1a; 
-      padding: 30px 25px; 
+      padding: 25px; 
       border-radius: 20px; 
       border: 1px solid #333; 
       transition: 0.4s; 
@@ -144,20 +135,41 @@
       flex-direction: column;
       justify-content: space-between;
       min-height: 320px;
+      overflow: hidden;
     }
-    .card:hover { border-color: var(--green); transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,255,136,0.2); }
+    .card:hover { border-color: var(--green); transform: translateY(-10px); }
     .card h3 { color: var(--green); margin-bottom: 15px; font-size: 22px; font-weight: 700; }
     .card p { color: #aaa; margin-bottom: 20px; flex-grow: 1; }
 
-    /* APP STYLES */
-    .app-container { background: #0a0a0a; padding: 20px; border-radius: 15px; border: 1px solid #333; }
-    .app-input { display: flex; gap: 10px; margin-bottom: 15px; }
-    .app-input input { flex: 1; padding: 10px; background: #1a1a1a; border: 1px solid #333; border-radius: 8px; color: #fff; outline: none; }
+    .app-container { 
+      background: #0a0a0a; 
+      padding: 15px; 
+      border-radius: 15px; 
+      border: 1px solid #333; 
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .app-input { 
+      display: flex; 
+      gap: 8px; 
+      margin-bottom: 15px; 
+      width: 100%;
+    }
+    .app-input input { 
+      flex: 1; 
+      padding: 10px; 
+      background: #1a1a1a; 
+      border: 1px solid #333; 
+      border-radius: 8px; 
+      color: #fff; 
+      outline: none;
+      min-width: 0;
+      font-size: 14px;
+    }
     .todo-item { background: #1a1a1a; padding: 10px; margin-bottom: 8px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; }
     .weather-result { text-align: center; padding: 15px 0; }
     .weather-result h3 { font-size: 28px; color: var(--green); }
 
-    /* FORM */
     .form-container {
       max-width: 500px;
       margin: 0 auto;
@@ -178,11 +190,9 @@
       font-size: 16px;
       outline: none;
     }
-    .form-group input:focus { border-color: var(--green); }
+    .btn-gradient { background: linear-gradient(90deg, var(--green), var(--blue)); color: #000; border: none; padding: 14px; border-radius: 50px; cursor: pointer; font-weight: 700; width: 100%; font-size: 16px; margin-top: 10px; }
     .form-toggle { text-align: center; margin-top: 20px; color: #aaa; }
     .form-toggle span { color: var(--green); cursor: pointer; font-weight: 700; }
-    .btn-gradient { background: linear-gradient(90deg, var(--green), var(--blue)); color: #000; border: none; padding: 14px; border-radius: 50px; cursor: pointer; font-weight: 700; width: 100%; font-size: 16px; margin-top: 10px; transition: 0.3s; }
-    .btn-gradient:hover { transform: scale(1.02); }
 
     footer { 
       text-align: center; 
@@ -218,9 +228,7 @@
 
   <section id="home">
     <h1>Hi, I'm SHUAIB</h1>
-    <div class="img-wrapper">
-      <img src="shuaib1.jpg" alt="Shuaib Photo">
-    </div>
+    <img src="shuaib1.jpg" alt="Shuaib Photo">
     <p>Web Developer | SMIT Student | From Karachi, Sindh, Pakistan</p>
     <a href="#projects" class="btn">💼 View My Work</a>
   </section>
@@ -284,32 +292,17 @@
     <div class="form-container">
       <div id="signupForm">
         <h3 style="text-align:center; margin-bottom:20px;">Create Account</h3>
-        <div class="form-group">
-          <label>Full Name</label>
-          <input type="text" id="userName" placeholder="Shuaib Ahmed">
-        </div>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" id="userEmail" placeholder="example@email.com">
-        </div>
-        <div class="form-group">
-          <label>Password</label>
-          <input type="password" id="userPassword" placeholder="Min 6 characters">
-        </div>
+        <div class="form-group"><label>Full Name</label><input type="text" id="userName" placeholder="Shuaib Ahmed"></div>
+        <div class="form-group"><label>Email</label><input type="email" id="userEmail" placeholder="example@email.com"></div>
+        <div class="form-group"><label>Password</label><input type="password" id="userPassword" placeholder="Min 6 characters"></div>
         <button class="btn-gradient" onclick="signupUser()">Create Account</button>
         <div class="form-toggle">Already have account? <span onclick="toggleForm()">Login</span></div>
       </div>
 
       <div id="loginForm" style="display:none;">
         <h3 style="text-align:center; margin-bottom:20px;">Login</h3>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" id="loginEmail" placeholder="example@email.com">
-        </div>
-        <div class="form-group">
-          <label>Password</label>
-          <input type="password" id="loginPassword" placeholder="Your password">
-        </div>
+        <div class="form-group"><label>Email</label><input type="email" id="loginEmail" placeholder="example@email.com"></div>
+        <div class="form-group"><label>Password</label><input type="password" id="loginPassword" placeholder="Your password"></div>
         <button class="btn-gradient" onclick="loginUser()">Login</button>
         <div class="form-toggle">Don't have account? <span onclick="toggleForm()">Sign Up</span></div>
       </div>

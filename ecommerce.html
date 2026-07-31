@@ -11,94 +11,95 @@ body { background: #f5f5f5; padding-bottom: 80px; }
 header { 
   background: #222; 
   color: #fff; 
-  padding: 15px 20px; 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  position: sticky; /* STICKY KIYA */
+  padding: 12px 15px; 
+  position: sticky;
   top: 0; 
   z-index: 999; 
-  flex-wrap: wrap; 
-  gap: 10px; 
 }
-.logo { font-size: 22px; font-weight: 700; white-space: nowrap; }
-.search-box { width: 100%; order: 3; } /* MOBILE ME NICHE */
-.search-box input { width: 100%; padding: 12px 15px; border-radius: 8px; border: none; font-size: 16px; outline: none; }
-.header-right { display: flex; gap: 10px; align-items: center; }
-.cart { font-size: 16px; font-weight: 600; cursor: pointer; background: #00a63e; padding: 8px 15px; border-radius: 20px; white-space: nowrap; }
-.account-btn { background: #0077ff; color: #fff; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: 700; border: none; text-decoration: none; }
+.top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.logo { font-size: 20px; font-weight: 700; }
+.header-right { display: flex; gap: 8px; }
+.cart { font-size: 15px; font-weight: 600; background: #00a63e; padding: 8px 12px; border-radius: 20px; }
+.account-btn { background: #0077ff; color: #fff; padding: 8px 12px; border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 14px; }
 
-@media(min-width: 769px){ 
-  .search-box { display: block; flex: 1; max-width: 500px; margin: 0 15px; order: 0; } 
+.search-box input { 
+  width: 100%; 
+  padding: 12px 15px; 
+  border-radius: 10px; 
+  border: none; 
+  font-size: 15px; 
+  outline: none; 
 }
 
-.container { max-width: 1200px; margin: 20px auto; padding: 0 15px 100px 15px; }
+.container { max-width: 1200px; margin: 15px auto; padding: 0 12px; }
 
 .hero { 
   background: linear-gradient(90deg, #00a63e, #008a33); 
   color: #fff; 
-  padding: 30px 20px; 
+  padding: 25px 15px; 
   text-align: center; 
   border-radius: 12px; 
-  margin-bottom: 20px; 
+  margin-bottom: 15px; 
 }
-.hero h1 { font-size: 28px; margin-bottom: 10px; }
+.hero h1 { font-size: 24px; margin-bottom: 8px; }
 
 .categories { 
   display: flex; 
-  gap: 10px; 
-  padding: 15px 0; 
-  justify-content: center; 
-  flex-wrap: wrap; 
-  margin-bottom: 20px;
+  gap: 8px; 
+  padding: 10px 0; 
+  overflow-x: auto;
+  margin-bottom: 15px;
 }
+.categories::-webkit-scrollbar { display: none; }
 .categories button { 
-  padding: 8px 16px; 
+  padding: 8px 14px; 
   border: 2px solid #00a63e; 
   background: #fff; 
   color: #00a63e; 
   border-radius: 20px; 
   cursor: pointer; 
   font-weight: 700; 
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .categories button.active { background: #00a63e; color: #fff; }
 
-.product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+.product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 @media(min-width: 768px) { .product-grid { grid-template-columns: repeat(4, 1fr); } }
-@media(min-width: 1024px) { .product-grid { grid-template-columns: repeat(5, 1fr); }
 
 .product-card { 
   background: #fff; 
   border-radius: 12px; 
-  padding: 12px; 
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+  padding: 10px; 
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
   text-align: center; 
 }
-.product-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
-.product-card h3 { font-size: 14px; margin-bottom: 8px; height: 40px; overflow: hidden; }
-.price { color: #00a63e; font-size: 16px; font-weight: 700; margin-bottom: 8px; }
-.btn { background: #00a63e; color: #fff; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: 700; width: 100%; }
+.product-card img { width: 100%; height: 140px; object-fit: cover; border-radius: 8px; margin-bottom: 8px; }
+.product-card h3 { font-size: 14px; margin-bottom: 6px; height: 36px; overflow: hidden; }
+.price { color: #00a63e; font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.btn { background: #00a63e; color: #fff; border: none; padding: 10px; border-radius: 8px; cursor: pointer; font-weight: 700; width: 100%; font-size: 14px; }
 
-footer { background: #222; color: #fff; padding: 30px 20px; margin-top: 40px; text-align: center; }
-.whatsapp-float { position: fixed; bottom: 70px; right: 20px; background: #25D366; color: #fff; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; text-decoration: none; }
+footer { background: #222; color: #fff; padding: 25px 15px; margin-top: 30px; text-align: center; font-size: 14px; }
+.whatsapp-float { position: fixed; bottom: 20px; right: 15px; background: #25D366; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; z-index: 1000; text-decoration: none; }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">🛍️ Shuaib Store</div>
-  <div class="header-right">
-    <div class="cart" onclick="showOrderForm()">🛒 <span id="cartCount">0</span></div>
-    <a href="index.html" class="account-btn">🏠 Back to Portfolio</a>
+  <div class="top-bar">
+    <div class="logo">🛍️ Shuaib Store</div>
+    <div class="header-right">
+      <div class="cart">🛒 <span id="cartCount">0</span></div>
+      <a href="index.html" class="account-btn">🏠 Back</a>
+    </div>
   </div>
   <div class="search-box"><input type="text" id="searchInput" placeholder="🔍 Product search karo..."></div>
 </header>
 
 <div class="container">
-  <!-- YE 2 CHEEZEIN GAYAB THI -->
   <div class="hero">
-    <h1>🔥 Mega Sale! Up to 50% OFF</h1>
-    <p>Cash on Delivery All Over Pakistan</p>
+    <h1>🔥 Mega Sale! 50% OFF</h1>
+    <p>Cash on Delivery Pakistan</p>
   </div>
 
   <div class="categories">
@@ -128,19 +129,17 @@ const products = [
 {id:4,name:"Running Shoes",price:3499,img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400",category:"Clothes"},
 {id:5,name:"Leather Bag",price:1800,img:"https://images.unsplash.com/photo-1591561954557-607968c989ab?w=400",category:"Clothes"},
 {id:6,name:"Bluetooth Speaker",price:2200,img:"https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400",category:"Electronics"},
-{id:7,name:"Laptop 15inch",price:65000,img:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400",category:"Electronics"},
+{id:7,name:"Laptop",price:65000,img:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400",category:"Electronics"},
 {id:8,name:"Mobile Phone",price:45000,img:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400",category:"Electronics"},
-{id:9,name:"Gaming Mouse",price:1200,img:"https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400",category:"Electronics"},
-{id:10,name:"Keyboard RGB",price:2500,img:"https://images.unsplash.com/photo-1541140532154-bbcfb0448003?w=400",category:"Electronics"},
-{id:13,name:"Perfume 100ml",price:1500,img:"https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400",category:"Beauty"},
+{id:13,name:"Perfume",price:1500,img:"https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400",category:"Beauty"},
 {id:14,name:"Face Cream",price:800,img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",category:"Beauty"},
 {id:16,name:"Sunglasses",price:650,img:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400",category:"Clothes"},
 {id:17,name:"Jeans Pant",price:1800,img:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=400",category:"Clothes"},
 {id:21,name:"Rice 5kg",price:900,img:"https://images.unsplash.com/photo-1589923188900-85dae523342b?w=400",category:"Grocery"},
-{id:22,name:"Cooking Oil 5L",price:1300,img:"https://images.unsplash.com/photo-1474979266404-7eaacb7d34fa?w=400",category:"Grocery"},
+{id:22,name:"Cooking Oil",price:1300,img:"https://images.unsplash.com/photo-1474979266404-7eaacb7d34fa?w=400",category:"Grocery"},
 {id:30,name:"Table Lamp",price:900,img:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400",category:"Home"},
 {id:31,name:"Wall Clock",price:1100,img:"https://images.unsplash.com/photo-1507646227500-4d389b0012be?w=400",category:"Home"},
-{id:36,name:"Lipstick Set",price:600,img:"https://images.unsplash.com/photo-1586495777744-4413f4c4f4b9?w=400",category:"Beauty"},
+{id:36,name:"Lipstick",price:600,img:"https://images.unsplash.com/photo-1586495777744-4413f4c4f4b9?w=400",category:"Beauty"},
 {id:42,name:"Formal Shirt",price:2000,img:"https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=400",category:"Clothes"},
 {id:44,name:"USB Cable",price:200,img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400",category:"Electronics"},
 {id:48,name:"Backpack",price:1600,img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400",category:"Clothes"},
@@ -162,7 +161,7 @@ function showProducts(filterProducts = products) {
   filterProducts.forEach(p => {
     grid.innerHTML += `
     <div class="product-card">
-      <img src="${p.img}" alt="${p.name}" loading="lazy">
+      <img src="${p.img}" alt="${p.name}">
       <h3>${p.name}</h3>
       <div class="price">Rs. ${p.price.toLocaleString()}</div>
       <button class="btn" onclick="addToCart(${p.id})">Add to Cart</button>
@@ -190,21 +189,11 @@ function addToCart(id) {
   cart.push(product); 
   localStorage.setItem('cart', JSON.stringify(cart));
   updateCartCount();
-  alert("✅ " + product.name + " added to cart!"); 
+  alert("✅ " + product.name + " added!"); 
 }
 
 function updateCartCount(){
   document.getElementById('cartCount').innerText = cart.length;
-}
-
-function showOrderForm() { 
-  if(cart.length === 0) return alert("Cart khali hai!");
-  let total = cart.reduce((sum, item) => sum + item.price, 0);
-  let items = cart.map(i => i.name).join('\n- ');
-  alert(`Cart: ${cart.length} items\n- ${items}\n\nTotal: Rs. ${total.toLocaleString()}\n\nOrder ke liye WhatsApp karein: 03107389936`);
-  localStorage.removeItem('cart'); 
-  cart = []; 
-  updateCartCount();
 }
 </script>
 </body>

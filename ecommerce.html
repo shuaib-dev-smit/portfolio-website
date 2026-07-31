@@ -246,4 +246,20 @@ function updateCart() { document.getElementById('cartCount').innerText = cart.le
 function showOrderForm() { document.getElementById('overlay').classList.add('show'); document.getElementById('cartSidebar').classList.add('show'); }
 function closeOrder() { document.getElementById('overlay').classList.remove('show'); document.getElementById('cartSidebar').classList.remove('show'); }
 function placeOrderCOD() { if(!currentUser) return alert('Pehle Login karo'); if(cart.length === 0) return alert("Cart khali hai!"); alert("Order Placed! COD - Hum jald contact karenge"); cart=[]; updateCart(); closeOrder(); }
-function orderOnWhatsApp() { if(!currentUser) return alert('Pehle Login karo'); if(cart.length === 0) return alert("Pehle cart me product add karo!"); const name=document.getElementById('oName').value; const phone=document.getElementById('oPhone').value; const address=document.getElementById('oAddress').value; if(!name || !phone || !address) return alert("Name, Phone aur Address bharo!"); let message=`*NEW ORDER - Shuaib Store*%0A*Customer:* ${name}%0A*Phone:* ${phone}%0A*Address:* ${address}%0A%0A*Products:*%0A`; let total=0; cart.forEach((item,i)=>{total+=item.price; message+=`${i+1}. ${item.name} - Rs.${item.p
+function orderOnWhatsApp() { if(!currentUser) return alert('Pehle Login karo'); if(cart.length === 0) return alert("Pehle cart me product add karo!"); const name=document.getElementById('oName').value; const phone=document.getElementById('oPhone').value; const address=document.getElementById('oAddress').value; if(!name || !phone || !address) return alert("Name, Phone aur Address bharo!"); let message=`*NEW ORDER - Shuaib Store*%0A*Customer:* ${name}%0A*Phone:* ${phone}%0A*Address:* ${address}%0A%0A*Products:*%0A`; let total=0; cart.forEach((item,i)=>{total+=item.price; message+=`${i+1}. ${item.name} - Rs.${item.pfunction orderOnWhatsApp() { 
+  if(!currentUser) return alert('Pehle Login karo'); 
+  if(cart.length === 0) return alert("Pehle cart me product add karo!"); 
+  
+  const name = document.getElementById('oName').value; 
+  const phone = document.getElementById('oPhone').value; 
+  const address = document.getElementById('oAddress').value; 
+  
+  if(!name || !phone || !address) return alert("Name, Phone aur Address bharo!");
+  
+  let message = `*NEW ORDER - Shuaib Store*%0A*Customer:* ${name}%0A*Phone:* ${phone}%0A*Address:* ${address}%0A%0A*Products:*%0A`; 
+  
+  let total = 0; 
+  cart.forEach((item, i) => {
+    total += item.price; 
+    message += `${i
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          

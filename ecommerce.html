@@ -3,50 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shuaib Store - Online Shopping Pakistan</title>
+<title>Shuaib Store</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
 body { background: #f5f5f5; }
-header { background: #222; color: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 999; flex-wrap: nowrap; gap: 10px; }
-.logo { font-size: 22px; font-weight: 700; white-space: nowrap; }
-.search-box { flex: 1; max-width: 500px; margin: 0 15px; }
-.search-box input { width: 100%; padding: 10px 15px; border-radius: 8px; border: none; font-size: 16px; outline: none; }
+header { background: #222; color: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 999; flex-wrap: wrap; gap: 10px; }
+.logo { font-size: 22px; font-weight: 700; }
 .header-right { display: flex; gap: 10px; align-items: center; }
-.cart { font-size: 16px; font-weight: 600; cursor: pointer; background: #00a63e; padding: 8px 15px; border-radius: 20px; white-space: nowrap; }
-.account-btn { background: #fff; color: #222; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: 700; border: none; white-space: nowrap; }
-
-@media(max-width: 768px){
-  .search-box { order: 3; width: 100%; margin: 10px 0 0 0; }
-  header { flex-wrap: wrap; }
-}
-
+.cart { font-size: 16px; font-weight: 600; cursor: pointer; background: #00a63e; padding: 8px 15px; border-radius: 20px; }
+.account-btn { background: #fff; color: #222; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: 700; border: none; }
+.search-box { width: 100%; max-width: 500px; }
+.search-box input { width: 100%; padding: 10px 15px; border-radius: 8px; border: none; font-size: 16px; outline: none; }
 .container { max-width: 1200px; margin: 20px auto; padding: 0 15px; }
 .hero { background: linear-gradient(90deg, #00a63e, #008a33); color: #fff; padding: 40px 20px; text-align: center; border-radius: 12px; margin-bottom: 20px; }
 .hero h1 { font-size: 28px; margin-bottom: 10px; }
 .categories { display: flex; gap: 10px; padding: 15px 0; justify-content: center; flex-wrap: wrap; }
-.categories button { padding: 8px 16px; border: 2px solid #00a63e; background: #fff; color: #00a63e; border-radius: 20px; cursor: pointer; font-weight: 700; transition: 0.3s; }
+.categories button { padding: 8px 16px; border: 2px solid #00a63e; background: #fff; color: #00a63e; border-radius: 20px; cursor: pointer; font-weight: 700; }
 .categories button.active { background: #00a63e; color: #fff; }
-.product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
-@media(min-width: 768px) { .product-grid { grid-template-columns: repeat(4, 1fr); } }
-@media(min-width: 1024px) { .product-grid { grid-template-columns: repeat(5, 1fr); } }
-.product-card { background: #fff; border-radius: 12px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; position: relative; transition: 0.3s; }
-.product-card:hover { transform: translateY(-5px); }
-.product-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; background: #eee; }
-.product-card h3 { font-size: 15px; margin-bottom: 8px; height: 40px; overflow: hidden; }
+.product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; min-height: 200px; }
+@media(min-width: 768px) { .product-grid { grid-template-columns: repeat(4, 1fr); }
+.product-card { background: #fff; border-radius: 12px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; position: relative; }
+.product-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
 .price { color: #00a63e; font-size: 16px; font-weight: 700; }
-.old-price { text-decoration: line-through; color: #999; font-size: 12px; margin-left: 5px; }
 .badge { background: #ff4444; color: #fff; padding: 3px 8px; border-radius: 5px; font-size: 12px; position: absolute; top: 10px; left: 10px; font-weight: 700; }
 .btn { background: #00a63e; color: #fff; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: 700; width: 100%; margin-top: 8px; }
-.btn:hover { background: #008a33; }
-
 .popup { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; align-items: center; justify-content: center; }
 .popup.show { display: flex; }
 .popup-box { background: #fff; padding: 30px; border-radius: 12px; width: 90%; max-width: 400px; }
-.popup-box h2 { margin-bottom: 15px; text-align: center; }
-.popup-box input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; }
-.popup-close { float: right; font-size: 24px; cursor: pointer; color: #999; }
-.switch-link { text-align: center; margin-top: 10px; color: #00a63e; cursor: pointer; font-weight: 600; }
-
 .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
 .overlay.show { display: block; }
 .cart-sidebar { position: fixed; top: 0; right: -420px; width: 100%; max-width: 400px; height: 100%; background: #fff; z-index: 1001; transition: right 0.4s; display: flex; flex-direction: column; }
@@ -54,10 +37,9 @@ header { background: #222; color: #fff; padding: 15px 20px; display: flex; justi
 .cart-header { padding: 20px; border-bottom: 2px solid #f0f0f0; display: flex; justify-content: space-between; }
 .cart-items { flex: 1; overflow-y: auto; padding: 15px; }
 .cart-footer { padding: 20px; border-top: 2px solid #f0f0f0; }
-.cart-footer input, .cart-footer textarea { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; }
-
 footer { background: #222; color: #fff; padding: 30px 20px; margin-top: 40px; text-align: center; }
-.whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: #fff; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+.whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: #fff; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; text-decoration: none; }
+.no-result { text-align: center; color: #999; grid-column: 1/-1; padding: 40px; font-size: 18px; }
 </style>
 </head>
 <body>
@@ -65,7 +47,7 @@ footer { background: #222; color: #fff; padding: 30px 20px; margin-top: 40px; te
 <header>
   <div class="logo">🛍️ Shuaib Store</div>
   <div class="search-box">
-    <input type="text" id="searchInput" placeholder="🔍 Product search karo... e.g: watch, shirt, rice">
+    <input type="text" id="searchInput" placeholder="🔍 Product search karo...">
   </div>
   <div class="header-right">
     <div class="cart" onclick="showOrderForm()">🛒 <span id="cartCount">0</span></div>
@@ -76,7 +58,7 @@ footer { background: #222; color: #fff; padding: 30px 20px; margin-top: 40px; te
 <div class="container">
   <div class="hero">
     <h1>🔥 Mega Sale! Up to 50% OFF</h1>
-    <p>Electronics, Clothes, Grocery - Cash on Delivery All Over Pakistan</p>
+    <p>Cash on Delivery All Over Pakistan</p>
   </div>
   
   <div class="categories">
@@ -93,13 +75,13 @@ footer { background: #222; color: #fff; padding: 30px 20px; margin-top: 40px; te
 
 <div class="popup" id="loginPopup">
   <div class="popup-box">
-    <span class="popup-close" onclick="closePopup()">&times;</span>
+    <span onclick="closePopup()" style="float:right; font-size:24px; cursor:pointer;">&times;</span>
     <h2 id="popupTitle">Login</h2>
-    <input type="text" id="userName" placeholder="Full Name" style="display:none;">
-    <input type="email" id="userEmail" placeholder="Email">
-    <input type="password" id="userPassword" placeholder="Password">
+    <input type="text" id="userName" placeholder="Full Name" style="display:none; width:100%; padding:12px; margin:8px 0;">
+    <input type="email" id="userEmail" placeholder="Email" style="width:100%; padding:12px; margin:8px 0;">
+    <input type="password" id="userPassword" placeholder="Password" style="width:100%; padding:12px; margin:8px 0;">
     <button class="btn" id="popupSubmitBtn" onclick="loginUser()">Login</button>
-    <div class="switch-link" id="switchText" onclick="switchForm()">Don't have account? Sign Up</div>
+    <div style="text-align:center; margin-top:10px; color:#00a63e; cursor:pointer;" id="switchText" onclick="switchForm()">Don't have account? Sign Up</div>
   </div>
 </div>
 
@@ -107,11 +89,11 @@ footer { background: #222; color: #fff; padding: 30px 20px; margin-top: 40px; te
 <div class="cart-sidebar" id="cartSidebar">
   <div class="cart-header">
     <h3>Your Cart 🛒</h3>
-    <span class="popup-close" onclick="closeOrder()">&times;</span>
+    <span onclick="closeOrder()" style="font-size:24px; cursor:pointer;">&times;</span>
   </div>
   <div class="cart-items" id="cartItems"><div>Cart khali hai</div></div>
   <div class="cart-footer">
-    <div style="font-size:18px; font-weight:700; margin-bottom:10px;">Total: Rs. <span id="cartTotal">0</span></div>
+    <div>Total: Rs. <span id="cartTotal">0</span></div>
     <input type="text" id="oName" placeholder="Your Name">
     <input type="tel" id="oPhone" placeholder="Phone Number">
     <textarea id="oAddress" rows="2" placeholder="Full Address"></textarea>
@@ -124,9 +106,8 @@ footer { background: #222; color: #fff; padding: 30px 20px; margin-top: 40px; te
 
 <footer>
   <h3>🛍️ Shuaib Store</h3>
-  <p>Your trusted online store in Pakistan</p>
-  <p>Contact: 0310-7389936 | Email: shuaib@store.com</p>
-  <p>© 2026 Shuaib Store. All Rights Reserved.</p>
+  <p>Contact: 0310-7389936</p>
+  <p>© 2026 Shuaib Store</p>
 </footer>
 
 <script>
@@ -137,50 +118,11 @@ const products = [
 {id:4,name:"Running Shoes",price:3499,img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400",category:"Clothes"},
 {id:5,name:"Leather Bag",price:1800,img:"https://images.unsplash.com/photo-1591561954557-607968c989ab?w=400",category:"Clothes"},
 {id:6,name:"Bluetooth Speaker",price:2200,img:"https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400",category:"Electronics"},
-{id:7,name:"Laptop 15inch",price:65000,img:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400",category:"Electronics"},
+{id:7,name:"Laptop",price:65000,img:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400",category:"Electronics"},
 {id:8,name:"Mobile Phone",price:45000,img:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400",category:"Electronics"},
-{id:9,name:"Gaming Mouse",price:1200,img:"https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400",category:"Electronics"},
-{id:10,name:"Keyboard RGB",price:2500,img:"https://images.unsplash.com/photo-1541140532154-bbcfb0448003?w=400",category:"Electronics"},
-{id:11,name:"Camera DSLR",price:55000,img:"https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=400",category:"Electronics"},
-{id:12,name:"Tripod Stand",price:1500,img:"https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=400",category:"Electronics"},
-{id:13,name:"Perfume 100ml",price:1500,img:"https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400",category:"Beauty"},
-{id:14,name:"Face Cream",price:800,img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",category:"Beauty"},
-{id:15,name:"Shampoo 500ml",price:450,img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",category:"Beauty"},
-{id:16,name:"Sunglasses",price:650,img:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400",category:"Clothes"},
-{id:17,name:"Jeans Pant",price:1800,img:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=400",category:"Clothes"},
-{id:18,name:"Hoodie Jacket",price:2200,img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400",category:"Clothes"},
-{id:19,name:"Kurta Women",price:1600,img:"https://images.unsplash.com/photo-1594633312681-425c5b97ccd1?w=400",category:"Clothes"},
-{id:20,name:"Cap Sports",price:350,img:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400",category:"Clothes"},
 {id:21,name:"Rice 5kg",price:900,img:"https://images.unsplash.com/photo-1589923188900-85dae523342b?w=400",category:"Grocery"},
-{id:22,name:"Cooking Oil 5L",price:1300,img:"https://images.unsplash.com/photo-1474979266404-7eaacb7d34fa?w=400",category:"Grocery"},
-{id:23,name:"Tea 500g",price:400,img:"https://images.unsplash.com/photo-1564890369478-c1b650e3f0b2?w=400",category:"Grocery"},
-{id:24,name:"Sugar 5kg",price:500,img:"https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=400",category:"Grocery"},
-{id:25,name:"Flour 10kg",price:1100,img:"https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=400",category:"Grocery"},
-{id:26,name:"Milk 1L",price:220,img:"https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400",category:"Grocery"},
-{id:27,name:"Bread",price:120,img:"https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400",category:"Grocery"},
-{id:28,name:"Eggs 12pcs",price:300,img:"https://images.unsplash.com/photo-1506976785307-8732e854ad03?w=400",category:"Grocery"},
-{id:29,name:"Chicken 1kg",price:600,img:"https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=400",category:"Grocery"},
 {id:30,name:"Table Lamp",price:900,img:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400",category:"Home"},
-{id:31,name:"Wall Clock",price:1100,img:"https://images.unsplash.com/photo-1507646227500-4d389b0012be?w=400",category:"Home"},
-{id:32,name:"Curtains 2pcs",price:2000,img:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400",category:"Home"},
-{id:33,name:"Sofa Cover",price:3500,img:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400",category:"Home"},
-{id:34,name:"Dinner Set",price:4000,img:"https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400",category:"Home"},
-{id:35,name:"Vacuum Cleaner",price:8500,img:"https://images.unsplash.com/photo-1558317374-067fb5f30001?w=400",category:"Home"},
-{id:36,name:"Lipstick Set",price:600,img:"https://images.unsplash.com/photo-1586495777744-4413f4c4f4b9?w=400",category:"Beauty"},
-{id:37,name:"Face Wash",price:350,img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",category:"Beauty"},
-{id:38,name:"Body Lotion",price:500,img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",category:"Beauty"},
-{id:39,name:"Hair Dryer",price:1800,img:"https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400",category:"Beauty"},
-{id:40,name:"Makeup Brush",price:700,img:"https://images.unsplash.com/photo-1596464716127-f5a447044a30?w=400",category:"Beauty"},
-{id:41,name:"Nail Polish",price:400,img:"https://images.unsplash.com/photo-1596464716127-f5a447044a30?w=400",category:"Beauty"},
-{id:42,name:"Formal Shirt",price:2000,img:"https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=400",category:"Clothes"},
-{id:43,name:"Abaya",price:2500,img:"https://images.unsplash.com/photo-1594633312681-425c5b97ccd1?w=400",category:"Clothes"},
-{id:44,name:"USB Cable",price:200,img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400",category:"Electronics"},
-{id:45,name:"Power Bank",price:2800,img:"https://images.unsplash.com/photo-1593642634443-44adaa06623a?w=400",category:"Electronics"},
-{id:46,name:"Earphones",price:800,img:"https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400",category:"Electronics"},
-{id:47,name:"Smart Band",price:1800,img:"https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=400",category:"Electronics"},
-{id:48,name:"Backpack",price:1600,img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400",category:"Clothes"},
-{id:49,name:"Water Bottle",price:300,img:"https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400",category:"Home"},
-{id:50,name:"Wallet Leather",price:799,img:"https://images.unsplash.com/photo-1627123424574-724758594e93?w=400",category:"Clothes"}
+{id:36,name:"Lipstick Set",price:600,img:"https://images.unsplash.com/photo-1586495777744-4413f4c4f4b9?w=400",category:"Beauty"}
 ];
 
 let cart = []; let currentCategory = 'all'; let isLoginMode = true;
@@ -188,19 +130,25 @@ let currentUser = JSON.parse(localStorage.getItem('currentUser'));
 const MY_WHATSAPP = "923107389936"; 
 
 window.onload = function(){
-  if(currentUser){ 
-    document.getElementById('accountBtn').innerText = currentUser.name; 
-    document.getElementById('oName').value = currentUser.name; 
-    document.getElementById('oPhone').value = currentUser.phone || '';
-  }
+  if(currentUser){ document.getElementById('accountBtn').innerText = currentUser.name; }
   showProducts();
 }
 
 function showProducts(filterProducts = products) {
-  const grid = document.getElementById('productGrid'); grid.innerHTML = '';
+  const grid = document.getElementById('productGrid'); 
+  grid.innerHTML = '';
+  if(filterProducts.length === 0){
+    grid.innerHTML = '<div class="no-result">😔 Koi product nahi mila</div>';
+    return;
+  }
   filterProducts.forEach(p => {
-    let oldPrice = Math.round(p.price * 1.3);
-    grid.innerHTML += `<div class="product-card"><span class="badge">-23%</span><img src="${p.img}"><h3>${p.name}</h3><div class="price">Rs. ${p.price.toLocaleString()} <span class="old-price">Rs. ${oldPrice.toLocaleString()}</span></div><button class="btn" onclick="addToCart(${p.id})">Add to Cart</button></div>`;
+    grid.innerHTML += `<div class="product-card">
+      <span class="badge">-23%</span>
+      <img src="${p.img}">
+      <h3>${p.name}</h3>
+      <div class="price">Rs. ${p.price.toLocaleString()}</div>
+      <button class="btn" onclick="addToCart(${p.id})">Add to Cart</button>
+    </div>`;
   });
 }
 
@@ -221,45 +169,29 @@ document.getElementById('searchInput').addEventListener('keyup', function(){
 
 function showLogin(){
   if(currentUser) { if(confirm('Logout karna hai?')){localStorage.removeItem('currentUser'); currentUser=null; document.getElementById('accountBtn').innerText='Login';} return; }
-  document.getElementById('loginPopup').classList.add('show'); isLoginMode = true;
-  document.getElementById('popupTitle').innerText = 'Login'; document.getElementById('userName').style.display = 'none';
-  document.getElementById('popupSubmitBtn').innerText = 'Login'; document.getElementById('switchText').innerText = "Don't have account? Sign Up";
+  document.getElementById('loginPopup').classList.add('show');
 }
 
 function switchForm(){
   isLoginMode = !isLoginMode;
-  if(isLoginMode){ document.getElementById('popupTitle').innerText='Login'; document.getElementById('userName').style.display='none'; document.getElementById('popupSubmitBtn').innerText='Login'; document.getElementById('switchText').innerText="Don't have account? Sign Up"; }
-  else{ document.getElementById('popupTitle').innerText='Create Account'; document.getElementById('userName').style.display='block'; document.getElementById('popupSubmitBtn').innerText='Sign Up'; document.getElementById('switchText').innerText="Already have account? Login"; }
+  document.getElementById('popupTitle').innerText = isLoginMode ? 'Login' : 'Sign Up';
+  document.getElementById('userName').style.display = isLoginMode ? 'none' : 'block';
+  document.getElementById('popupSubmitBtn').innerText = isLoginMode ? 'Login' : 'Sign Up';
 }
 
 function loginUser(){
   const email = document.getElementById('userEmail').value; const password = document.getElementById('userPassword').value; const name = document.getElementById('userName').value;
   let users = JSON.parse(localStorage.getItem('users')) || [];
-  if(isLoginMode){ let user = users.find(u => u.email === email && u.password === password); if(user){ currentUser=user; localStorage.setItem('currentUser',JSON.stringify(user)); document.getElementById('accountBtn').innerText=user.name; document.getElementById('oName').value=user.name; alert('Login Successful!'); closePopup(); } else { alert('Wrong Email or Password'); } }
-  else{ if(!name || !email || !password) return alert('Fill all fields'); if(users.find(u => u.email === email)) return alert('Email already exists'); let newUser={name,email,password}; users.push(newUser); localStorage.setItem('users',JSON.stringify(users)); alert('Account Created! Now Login'); switchForm(); }
+  if(isLoginMode){ let user = users.find(u => u.email === email && u.password === password); if(user){ currentUser=user; localStorage.setItem('currentUser',JSON.stringify(user)); document.getElementById('accountBtn').innerText=user.name; alert('Login Successful!'); closePopup(); } else { alert('Wrong Email or Password'); }
+  else{ if(!name || !email || !password) return alert('Fill all fields'); let newUser={name,email,password}; users.push(newUser); localStorage.setItem('users',JSON.stringify(users)); alert('Account Created!'); switchForm(); }
 }
 
 function closePopup(){ document.getElementById('loginPopup').classList.remove('show'); }
-
-function addToCart(id) { const product = products.find(p => p.id === id); cart.push(product); updateCart(); alert(product.name + " added to cart!"); }
-function updateCart() { document.getElementById('cartCount').innerText = cart.length; let total = 0; document.getElementById('cartItems').innerHTML = ''; if(cart.length===0){document.getElementById('cartItems').innerHTML='<div>Cart khali hai</div>'} cart.forEach((item) => { total += item.price; document.getElementById('cartItems').innerHTML += `<div style="margin-bottom:8px;">${item.name} - Rs.${item.price}</div>`; }); document.getElementById('cartTotal').innerText = total.toLocaleString(); }
+function addToCart(id) { const product = products.find(p => p.id === id); cart.push(product); document.getElementById('cartCount').innerText = cart.length; alert(product.name + " added!"); }
 function showOrderForm() { document.getElementById('overlay').classList.add('show'); document.getElementById('cartSidebar').classList.add('show'); }
 function closeOrder() { document.getElementById('overlay').classList.remove('show'); document.getElementById('cartSidebar').classList.remove('show'); }
-function placeOrderCOD() { if(!currentUser) return alert('Pehle Login karo'); if(cart.length === 0) return alert("Cart khali hai!"); alert("Order Placed! COD - Hum jald contact karenge"); cart=[]; updateCart(); closeOrder(); }
-function orderOnWhatsApp() { if(!currentUser) return alert('Pehle Login karo'); if(cart.length === 0) return alert("Pehle cart me product add karo!"); const name=document.getElementById('oName').value; const phone=document.getElementById('oPhone').value; const address=document.getElementById('oAddress').value; if(!name || !phone || !address) return alert("Name, Phone aur Address bharo!"); let message=`*NEW ORDER - Shuaib Store*%0A*Customer:* ${name}%0A*Phone:* ${phone}%0A*Address:* ${address}%0A%0A*Products:*%0A`; let total=0; cart.forEach((item,i)=>{total+=item.price; message+=`${i+1}. ${item.name} - Rs.${item.pfunction orderOnWhatsApp() { 
-  if(!currentUser) return alert('Pehle Login karo'); 
-  if(cart.length === 0) return alert("Pehle cart me product add karo!"); 
-  
-  const name = document.getElementById('oName').value; 
-  const phone = document.getElementById('oPhone').value; 
-  const address = document.getElementById('oAddress').value; 
-  
-  if(!name || !phone || !address) return alert("Name, Phone aur Address bharo!");
-  
-  let message = `*NEW ORDER - Shuaib Store*%0A*Customer:* ${name}%0A*Phone:* ${phone}%0A*Address:* ${address}%0A%0A*Products:*%0A`; 
-  
-  let total = 0; 
-  cart.forEach((item, i) => {
-    total += item.price; 
-    message += `${i
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+function placeOrderCOD() { alert("Order Placed!"); }
+function orderOnWhatsApp() { alert("WhatsApp Order"); }
+</script>
+</body>
+</html>

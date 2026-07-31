@@ -14,8 +14,8 @@ header { background: #222; color: #fff; padding: 15px 20px; display: flex; justi
 .header-right { display: flex; gap: 10px; align-items: center; }
 .cart { font-size: 16px; font-weight: 600; cursor: pointer; background: #00a63e; padding: 8px 15px; border-radius: 20px; white-space: nowrap; transition: 0.3s; }
 .cart:hover { background: #008a33; }
-.account-btn { background: #ff4444; color: #fff; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: 700; border: none; white-space: nowrap; transition: 0.3s; }
-.account-btn:hover { background: #cc0000; }
+.account-btn { background: #0077ff; color: #fff; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: 700; border: none; white-space: nowrap; transition: 0.3s; text-decoration: none; }
+.account-btn:hover { background: #0055cc; }
 
 @media(max-width: 768px){ .search-box { display: block; order: 3; width: 100%; margin: 10px 0 0 0; } }
 @media(min-width: 769px){ .search-box { display: block; flex: 1; max-width: 500px; margin: 0 15px; } }
@@ -48,7 +48,7 @@ footer { background: #222; color: #fff; padding: 30px 20px; margin-top: 40px; te
   <div class="search-box"><input type="text" id="searchInput" placeholder="🔍 Product search karo..."></div>
   <div class="header-right">
     <div class="cart" onclick="showOrderForm()">🛒 <span id="cartCount">0</span></div>
-    <button class="account-btn" id="accountBtn" onclick="logout()">Logout</button>
+    <a href="index.html" class="account-btn">🏠 Back to Portfolio</a>
   </div>
 </header>
 
@@ -124,20 +124,9 @@ const products = [
 
 let cart = JSON.parse(localStorage.getItem('cart')) || []; 
 let currentCategory = 'all';
-let currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-// CHECK LOGIN ON LOAD
+// NO LOGIN CHECK - DIRECT OPEN
 window.onload = function(){
-  // DEMO KE LIYE: Agar login nahi hai to bhi store khul jaye
-  if(!localStorage.getItem('token')){
-    // alert("⚠️ Pehle Login karo"); 
-    // window.location.href = "index.html";
-    // return;
-    document.getElementById('accountBtn').innerText = "Login";
-  } else {
-    let userName = currentUser ? (currentUser.name || currentUser.email) : "User";
-    document.getElementById('accountBtn').innerText = "Logout - " + userName;
-  }
   showProducts();
   updateCartCount();
 }
@@ -191,12 +180,6 @@ function showOrderForm() {
   localStorage.removeItem('cart'); 
   cart = []; 
   updateCartCount();
-}
-
-function logout(){ 
-  localStorage.clear(); 
-  alert("Logout ho gaye");
-  window.location.href = "index.html"; 
 }
 </script>
 </body>

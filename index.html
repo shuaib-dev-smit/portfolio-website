@@ -174,7 +174,7 @@
     
     .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
     .card { 
-      background: #1a1a1a; 
+      background: #1a1a; 
       padding: 35px; 
       border-radius: 20px; 
       border: 1px solid #333; 
@@ -227,7 +227,7 @@
     /* CHAT APP STYLE */
     #chat-container { max-width: 600px; margin: 0 auto; background: #1a1a1a; border-radius: 20px; border: 2px solid var(--green); }
     #messages { height: 350px; overflow-y: auto; padding: 20px; border-bottom: 1px solid #333; }
-    .message { margin-bottom: 15px; padding: 12px; border-radius: 12px; background: #2a2a2a; word-wrap: break-word; animation: fadeIn 0.3s; }
+    .message { margin-bottom: 15px; padding: 12px; border-radius: 12px; background: #2a2a2a; word-wrap: break-word; animation: fadeIn 0.3s; white-space: pre-line; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     .message strong { color: var(--green); }
     .message.bot { background: #003b29; border: 1px solid var(--green); }
@@ -322,13 +322,13 @@
   </section>
 
   <section id="chat">
-    <h2>SMIT AI Chatbot 🤖</h2>
+    <h2>SHUAIB AI Chatbot 🤖</h2> <!-- NAME CHANGE -->
     <div id="chat-container">
       <div id="messages">
-        <div class="message bot"><strong>SMIT Bot 🤖:</strong> Assalamualaikum! Main SMIT AI Bot hun. Koi bhi sawal poocho 😊</div>
+        <div class="message bot"><strong>SHUAIB AI 🤖:</strong> Assalamualaikum! Main SHUAIB AI hun. Mere creator Shuaib ke bare me kuch bhi poocho 😊</div>
       </div>
       <div id="input-area">
-        <input type="text" id="messageInput" placeholder="Koi bhi sawal poocho...">
+        <input type="text" id="messageInput" placeholder="Shuaib ke bare me poocho... skills, projects, contact">
         <button id="sendBtn">Send</button>
       </div>
     </div>
@@ -352,66 +352,79 @@
     <p>&copy; 2026 SHUAIB AHMED SOLANGI. All Rights Reserved. | Designed with ❤️</p>
   </footer>
 
-  <!-- FIREBASE HATA DIYA - SIRF LOCAL JS CHAT -->
   <script>
     const messagesDiv = document.getElementById('messages');
     const messageInput = document.getElementById('messageInput');
     const sendBtn = document.getElementById('sendBtn');
 
-    // AI BOT KA DIMAG
+    // SHUAIB KI FULL WEBSITE DATA
+    const websiteData = {
+      name: "Shuaib Ahmed Solangi",
+      role: "Web Developer aur SMIT Student",
+      location: "Karachi, Sindh, Pakistan",
+      email: "shuaibahmedsolangi5@gmail.com",
+      phone: "+92 310 7389936",
+      skills: ["HTML5 - 90%", "CSS3 - 85%", "JavaScript - 70%", "Firebase - 75%"],
+      projects: [
+        "Portfolio Website: Fully responsive HTML5, CSS3 - GitHub Pages",
+        "E-commerce Website: T-Shirt Rs.999, Shoes Rs.2499, Watch Rs.3500, Bag Rs.1800",
+        "Weather App: Real-time OpenWeather API",
+        "Todo List App: Local storage task manager"
+      ]
+    };
+
+    // AI BOT KA DIMAG - FULL DETAIL
     function getBotReply(text) {
       const lower = text.toLowerCase().trim();
       
       if (lower.includes("hi") || lower.includes("hello") || lower.includes("hey")) {
-        return "Hello! Kaise hain aap? Main SMIT AI Bot hun 🤖. Main aapki kya madad kar sakta hun?";
+        return "Hello! Main SHUAIB AI hun 🤖. Main Shuaib ke bare me sab kuch janta hun. Kya poochna hai?";
       }
       if (lower.includes("salam") || lower.includes("assalam")) {
-        return "Walaikum Assalam! SMIT AI Assistant me khushamdeed!";
+        return "Walaikum Assalam! Main SHUAIB AI Assistant hun. Shuaib ke portfolio ke bare me sawal karen!";
       }
-      if (lower.includes("shuaib") || lower.includes("who is shuaib")) {
-        return "Shuaib Ahmed Solangi SMIT ke talented Web Developer hain 🚀. Wo HTML, CSS, JS me expert hain.";
+      if (lower.includes("shuaib") || lower.includes("who is shuaib") || lower.includes("about")) {
+        return `Shuaib Ahmed Solangi ${websiteData.role} hain 🚀.\nLocation: ${websiteData.location}\nGoal: Modern responsive websites banana`;
+      }
+      if (lower.includes("skill") || lower.includes("expert")) {
+        return `Shuaib ki Skills:\n• ${websiteData.skills.join("\n• ")}`;
+      }
+      if (lower.includes("project") || lower.includes("work") || lower.includes("banaya")) {
+        return `Shuaib ne ye projects banaye hain:\n• ${websiteData.projects.join("\n• ")}`;
+      }
+      if (lower.includes("contact") || lower.includes("number") || lower.includes("whatsapp") || lower.includes("email")) {
+        return `Shuaib se contact karein:\n📞 Phone: ${websiteData.phone}\n📧 Email: ${websiteData.email}\n📍 Location: ${websiteData.location}`;
       }
       if (lower.includes("smit") || lower.includes("course")) {
-        return "SMIT me Web Development, AI, Python aur Cloud Computing ke free courses karwaye jate hain!";
+        return "Shuaib SMIT me Web Development seekh rahe hain. SMIT me AI, Python aur Cloud Computing ke free courses bhi hote hain.";
       }
-      if (lower.includes("project") || lower.includes("work")) {
-        return "Shuaib ne Portfolio, E-commerce App, Weather App aur Todo App jaise projects banaye hain 💻.";
-      }
-      if (lower.includes("contact") || lower.includes("number") || lower.includes("whatsapp")) {
-        return "Aap Contact section me ja kar WhatsApp link ya direct Call button use kar sakte hain!";
-      }
-      if (lower.includes("skill") || lower.includes("html") || lower.includes("js")) {
-        return "Shuaib HTML, CSS, JavaScript aur Firebase me expertise rakhte hain.";
+      if (lower.includes("ecommerce") || lower.includes("shop") || lower.includes("price")) {
+        return `E-commerce Project Products:\n🛍️ T-Shirt: Rs.999\n🛍️ Shoes: Rs.2499\n🛍️ Watch: Rs.3500\n🛍️ Bag: Rs.1800`;
       }
 
       const genericReplies = [
-        `Aapne poocha: "${text}". Main SMIT AI Bot hun! Shuaib se rabta karne ke liye Contact section check karein 😊`,
-        `Aapka message mil gaya! Shuaib Solangi aap se jald hi contact karenge.`,
-        `Main SMIT AI Bot hun. Aap portfolio ya courses ke baare me koi bhi sawal pooch sakte hain!`
+        `Aapne poocha: "${text}"\nMain SHUAIB AI hun! "skills", "projects" ya "contact" likh kar detail le sakte hain 😊`,
+        `Main Shuaib ka AI assistant hun. Aap portfolio, skills ya contact ke bare me pooch sakte hain!`,
       ];
       return genericReplies[Math.floor(Math.random() * genericReplies.length)];
     }
 
-    // Screen pe message add karne ka function
     function addMessage(text, name, isBot = false) {
       const className = isBot ? "message bot" : "message";
       messagesDiv.innerHTML += `<div class="${className}"><strong>${name}:</strong> ${text}</div>`;
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
 
-    // SEND FUNCTION
     function sendMessage() {
       const text = messageInput.value.trim();
       if (!text) return;
 
-      // 1. User ka message dikhao
       addMessage(text, "You", false);
       messageInput.value = "";
 
-      // 2. 800ms baad Bot reply dikhao
       setTimeout(() => {
         const replyText = getBotReply(text);
-        addMessage(replyText, "SMIT Bot 🤖", true);
+        addMessage(replyText, "SHUAIB AI 🤖", true);
       }, 800);
     }
 

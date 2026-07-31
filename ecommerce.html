@@ -7,98 +7,46 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
 body { background: #f5f5f5; }
-
-header { 
-  background: #222; 
-  color: #fff; 
-  padding: 15px 20px; 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
-.logo { font-size: 22px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+header { background: #222; color: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 999; flex-wrap: wrap; gap: 10px; }
+.logo { font-size: 22px; font-weight: 700; }
 .cart { font-size: 16px; font-weight: 600; cursor: pointer; }
 
+/* NAYA SEARCH BOX */
+.search-box { width: 100%; max-width: 500px; }
+.search-box input { width: 100%; padding: 10px 15px; border-radius: 8px; border: none; font-size: 16px; outline: none; }
+
 .container { max-width: 1200px; margin: 20px auto; padding: 0 15px; }
-
-/* PRODUCT GRID FIX */
-.product-grid { 
-  display: grid; 
-  grid-template-columns: repeat(2, 1fr); /* Mobile: 2 products */
-  gap: 15px; 
-}
-@media(min-width: 768px) {
-  .product-grid { grid-template-columns: repeat(4, 1fr); } /* Tablet: 4 products */
-}
-@media(min-width: 1024px) {
-  .product-grid { grid-template-columns: repeat(5, 1fr); } /* Desktop: 5 products */
-}
-
-.product-card { 
-  background: #fff; 
-  border-radius: 12px; 
-  padding: 12px; 
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
-  text-align: center;
-  transition: 0.3s;
-}
-.product-card:hover { transform: translateY(-5px); }
-.product-card img { 
-  width: 100%; 
-  height: 160px; 
-  object-fit: cover; 
-  border-radius: 8px; 
-  margin-bottom: 10px;
-}
+.product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+@media(min-width: 768px) { .product-grid { grid-template-columns: repeat(4, 1fr); } }
+@media(min-width: 1024px) { .product-grid { grid-template-columns: repeat(5, 1fr); } }
+.product-card { background: #fff; border-radius: 12px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; }
+.product-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
 .product-card h3 { font-size: 15px; margin-bottom: 8px; height: 40px; overflow: hidden; }
 .price { color: #00a63e; font-size: 16px; font-weight: 700; margin-bottom: 10px; }
-.btn { 
-  background: #00a63e; 
-  color: #fff; 
-  border: none; 
-  padding: 10px 15px; 
-  border-radius: 8px; 
-  cursor: pointer; 
-  font-weight: 700; 
-  width: 100%;
-}
+.btn { background: #00a63e; color: #fff; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: 700; width: 100%; }
 .btn:hover { background: #008a33; }
-.btn-remove { background: #ff4444; font-size: 12px; padding: 5px 10px; width: auto; margin-left: 5px; }
-
 .back { text-align: center; margin: 30px 0; }
 .back a { text-decoration: none; color: #333; font-weight: 700; }
-
-/* ORDER FORM / CART */
 .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
 .overlay.show { display: block; }
-.order-box { 
-  position: fixed; 
-  top: 50%; 
-  left: 50%; 
-  transform: translate(-50%, -50%); 
-  background: #fff; 
-  padding: 25px; 
-  border-radius: 15px; 
-  width: 90%; 
-  max-width: 400px; 
-  z-index: 1001;
-  display: none;
-  max-height: 80vh;
-  overflow-y: auto;
-}
+.order-box { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 25px; border-radius: 15px; width: 90%; max-width: 400px; z-index: 1001; display: none; }
 .order-box.show { display: block; }
 .order-box input, .order-box textarea { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ddd; border-radius: 8px; }
-.cart-item { display: flex; justify-content: space-between; align-items: center; margin: 10px 0; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+.cart-item { display: flex; justify-content: space-between; margin: 10px 0; }
 .total { font-size: 18px; font-weight: 700; color: #00a63e; margin: 15px 0; text-align: right; }
+.no-result { text-align: center; color: #999; grid-column: 1/-1; padding: 40px; font-size: 18px; }
 </style>
 </head>
 <body>
 
 <header>
   <div class="logo">🛍️ Shuaib Store</div>
+  
+  <!-- NAYA SEARCH BAR -->
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="🔍 Product search karo... e.g: watch, shirt, rice">
+  </div>
+  
   <div class="cart" onclick="showOrderForm()">Cart: <span id="cartCount">0</span> Items</div>
 </header>
 
@@ -110,22 +58,19 @@ header {
   <a href="index.html">⬅️ Back to Portfolio</a>
 </div>
 
-<!-- ORDER FORM -->
 <div class="overlay" id="overlay" onclick="closeOrder()"></div>
 <div class="order-box" id="orderBox">
-  <h3 style="margin-bottom:15px;">Your Cart 🛒</h3>
+  <h3>Your Cart 🛒</h3>
   <div id="cartItems"></div>
   <div class="total">Total: Rs. <span id="cartTotal">0</span></div>
-  
-  <h3 style="margin:15px 0;">Order Details</h3>
+  <h3>Order Details</h3>
   <input type="text" id="oName" placeholder="Your Name">
   <input type="tel" id="oPhone" placeholder="Phone Number">
   <textarea id="oAddress" rows="3" placeholder="Full Address"></textarea>
-  <button class="btn" onclick="placeOrder()">Place Order - Cash on Delivery</button>
+  <button class="btn" onclick="placeOrder()">Place Order - COD</button>
 </div>
 
 <script>
-// 50 PRODUCTS
 const products = [
 {id:1,name:"Smart Watch",price:8999,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"},
 {id:2,name:"Headphones",price:2499,img:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400"},
@@ -179,77 +124,46 @@ const products = [
 {id:50,name:"Wallet Leather",price:799,img:"https://images.unsplash.com/photo-1627123424574-724758594e93?w=400"}
 ];
 
-let cart = JSON.parse(localStorage.getItem('shuaibCart')) || [];
+let cart = [];
 
-function showProducts() {
+function showProducts(filterProducts = products) {
   const grid = document.getElementById('productGrid');
   grid.innerHTML = '';
-  products.forEach(p => {
-    grid.innerHTML += `
-      <div class="product-card">
-        <img src="${p.img}" alt="${p.name}">
-        <h3>${p.name}</h3>
-        <div class="price">Rs. ${p.price.toLocaleString()}</div>
-        <button class="btn" onclick="addToCart(${p.id})">Add to Cart</button>
-      </div>
-    `;
+  
+  if(filterProducts.length === 0){
+    grid.innerHTML = '<div class="no-result">😔 Koi product nahi mila</div>';
+    return;
+  }
+
+  filterProducts.forEach(p => {
+    grid.innerHTML += `<div class="product-card"><img src="${p.img}"><h3>${p.name}</h3><div class="price">Rs. ${p.price.toLocaleString()}</div><button class="btn" onclick="addToCart(${p.id})">Add to Cart</button></div>`;
   });
-  updateCart();
 }
+
+// SEARCH FUNCTION
+document.getElementById('searchInput').addEventListener('keyup', function(){
+  const searchText = this.value.toLowerCase();
+  const filtered = products.filter(p => p.name.toLowerCase().includes(searchText));
+  showProducts(filtered);
+});
 
 function addToCart(id) {
   const product = products.find(p => p.id === id);
-  const exist = cart.find(item => item.id === id);
-  if(exist) {
-    exist.qty++;
-  } else {
-    cart.push({...product, qty: 1});
-  }
-  saveCart();
-  alert(`${product.name} added to cart!`);
-}
-
-function removeFromCart(id) {
-  cart = cart.filter(item => item.id !== id);
-  saveCart();
-}
-
-function saveCart() {
-  localStorage.setItem('shuaibCart', JSON.stringify(cart));
-  updateCart();
-}
-
-function updateCart() {
-  const totalItems = cart.reduce((a,b) => a + b.qty, 0);
-  document.getElementById('cartCount').innerText = totalItems;
-  
-  const cartItems = document.getElementById('cartItems');
-  cartItems.innerHTML = '';
-  let total = 0;
-  
-  if(cart.length === 0) {
-    cartItems.innerHTML = '<p style="text-align:center; color:#999;">Cart khali hai</p>';
-  }
-
-  cart.forEach(item => {
-    total += item.price * item.qty;
-    cartItems.innerHTML += `
-      <div class="cart-item">
-        <span>${item.name} x ${item.qty}</span>
-        <div>
-          <span>Rs. ${(item.price * item.qty).toLocaleString()}</span>
-          <button class="btn-remove" onclick="removeFromCart(${item.id})">X</button>
-        </div>
-      </div>
-    `;
-  });
-  document.getElementById('cartTotal').innerText = total.toLocaleString();
+  cart.push(product);
+  document.getElementById('cartCount').innerText = cart.length;
+  alert(product.name + " added!");
 }
 
 function showOrderForm() {
-  if(cart.length === 0) return alert("Cart khali hai! Pehle product add karo");
   document.getElementById('overlay').classList.add('show');
   document.getElementById('orderBox').classList.add('show');
+  let total = 0;
+  document.getElementById('cartItems').innerHTML = '';
+  cart.forEach(item => {
+    total += item.price;
+    document.getElementById('cartItems').innerHTML += `<div class="cart-item"><span>${item.name}</span><span>Rs.${item.price}</span></div>`;
+  });
+  document.getElementById('cartTotal').innerText = total.toLocaleString();
 }
 
 function closeOrder() {
@@ -258,29 +172,13 @@ function closeOrder() {
 }
 
 function placeOrder() {
-  const name = document.getElementById('oName').value;
-  const phone = document.getElementById('oPhone').value;
-  const address = document.getElementById('oAddress').value;
-  if(!name || !phone || !address) return alert("Sab fields fill karo");
-  
-  const total = document.getElementById('cartTotal').innerText;
-  
-  const order = { name, phone, address, items: cart, total, date: new Date().toLocaleString() };
-  let orders = JSON.parse(localStorage.getItem('shuaibOrders')) || [];
-  orders.push(order);
-  localStorage.setItem('shuaibOrders', JSON.stringify(orders));
-
-  alert(`Order Placed! 🎉\nName: ${name}\nTotal: Rs.${total}\nCash on Delivery\nShuaib aap ko call karega`);
-  
+  alert("Order Placed! COD");
   cart = [];
-  saveCart();
-  document.getElementById('oName').value = '';
-  document.getElementById('oPhone').value = '';
-  document.getElementById('oAddress').value = '';
+  document.getElementById('cartCount').innerText = 0;
   closeOrder();
 }
 
-showProducts(); // YE LINE ZARURI HAI
+showProducts();
 </script>
 </body>
 </html>

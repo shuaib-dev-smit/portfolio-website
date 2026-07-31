@@ -41,7 +41,7 @@
       letter-spacing: 2px; 
     }
     
-    .nav-right { display: flex; align-items: center; gap: 20px; position: relative; }
+    .nav-right { display: flex; align-items: center; gap: 20px; }
     .desktop-menu { display: flex; gap: 15px; }
     .desktop-menu a { 
       color: #fff; 
@@ -66,53 +66,12 @@
       border: none;
       font-weight: 700;
       cursor: pointer;
+      transition: 0.3s;
     }
-    
-    .menu-dots { display: none; font-size: 26px; color: #fff; cursor: pointer; font-weight: bold; }
-    .dropdown { 
-      display: none; 
-      position: absolute; 
-      top: 50px; 
-      right: 0; 
-      background: #1a1a1a; 
-      border: 2px solid var(--green); 
-      border-radius: 12px; 
-      padding: 15px; 
-      min-width: 200px; 
-      z-index: 9999; 
-    }
-    .dropdown.show { display: block; }
-    .dropdown a { 
-      display: block; 
-      color: #fff; 
-      text-decoration: none; 
-      padding: 12px; 
-      border-radius: 8px; 
-      margin-bottom: 5px; 
-      font-weight: 600;
-    }
-    .dropdown a:hover { background: linear-gradient(90deg, var(--green), var(--blue)); color: #000; }
+    .btn-login:hover { transform: scale(1.05); }
     
     section { padding: 100px 20px; max-width: 1100px; margin: 0 auto; }
-    #home { text-align: center; padding-top: 180px; min-height: 100vh; position: relative; }
-    
-    .home-setting { 
-      position: absolute; 
-      top: 20px; 
-      right: 20px; 
-      font-size: 28px; 
-      cursor: pointer; 
-      background: var(--glass);
-      border: 2px solid var(--green);
-      width: 55px; 
-      height: 55px; 
-      border-radius: 50%; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      transition: 0.3s; 
-    }
-    .home-setting:hover { transform: rotate(90deg) scale(1.1); }
+    #home { text-align: center; padding-top: 180px; min-height: 100vh; }
     
     #home h1 { 
       font-size: 56px; 
@@ -124,37 +83,14 @@
     }
     #home p { font-size: 22px; color: #aaa; margin-bottom: 40px; }
     
-    .img-wrapper {
-      position: relative;
-      display: inline-block;
-      margin: 30px 0;
-      z-index: 1;
-    }
-    .img-wrapper::before {
-      content: '';
-      position: absolute;
-      top: -15px; 
-      left: -15px; 
-      right: -15px; 
-      bottom: -15px;
-      background: linear-gradient(45deg, #00ff88, #0077ff, #a855f7, #00ff88);
-      background-size: 300% 300%;
-      border-radius: 50%;
-      z-index: -1;
-      animation: rotateRing 4s linear infinite, glowMove 3s ease infinite;
-      filter: blur(10px);
-    }
-    @keyframes rotateRing { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-    @keyframes glowMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    .img-wrapper { position: relative; display: inline-block; margin: 30px 0; }
     #home img { 
       width: 220px; 
       height: 220px; 
       border-radius: 50%; 
-      border: 4px solid #0a0a0a;
+      border: 4px solid var(--green);
       object-fit: cover; 
       box-shadow: 0 0 40px rgba(0,255,136,0.5); 
-      position: relative;
-      z-index: 2;
     }
     
     .btn { 
@@ -194,13 +130,7 @@
     .card:hover { border-color: var(--green); transform: translateY(-15px); }
     .card h3 { color: var(--green); margin-bottom: 15px; font-size: 24px; font-weight: 700; }
 
-    .skills-container { max-width: 700px; margin: 0 auto; }
-    .skill { margin-bottom: 25px; }
-    .skill-name { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 600; font-size: 18px; }
-    .skill-bar { background: #333; border-radius: 10px; height: 14px; overflow: hidden; }
-    .skill-progress { height: 100%; background: linear-gradient(90deg, var(--green), var(--blue)); border-radius: 10px; }
-
-    /* FORM STYLE - NEW OTP STYLE */
+    /* SIMPLE FORM */
     .form-container {
       max-width: 500px;
       margin: 0 auto;
@@ -224,54 +154,8 @@
     .form-group input:focus { border-color: var(--green); }
     .form-toggle { text-align: center; margin-top: 20px; color: #aaa; }
     .form-toggle span { color: var(--green); cursor: pointer; font-weight: 700; }
-    .btn-gradient { background: linear-gradient(90deg, var(--green), var(--blue)); color: #000; border: none; padding: 14px; border-radius: 50px; cursor: pointer; font-weight: 700; width: 100%; font-size: 16px; margin-top: 10px; }
-
-    .contact-box { 
-      max-width: 600px;
-      margin: 0 auto;
-      background: rgba(0, 255, 136, 0.05);
-      padding: 50px 40px;
-      border-radius: 25px;
-      border: 3px solid var(--green);
-      box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
-      text-align: center;
-    }
-    .contact-photo { 
-      width: 180px; 
-      height: 180px; 
-      border-radius: 50%; 
-      border: 4px solid var(--green); 
-      object-fit: cover;
-      margin-bottom: 30px;
-    }
-    .contact-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      font-size: 18px;
-      margin: 20px 0;
-      font-weight: 600;
-      flex-wrap: wrap;
-      word-break: break-word;
-      text-align: center;
-    }
-    .contact-item .icon { font-size: 22px; }
-    .contact-buttons { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; align-items: center; }
-    .btn-whatsapp { background: #25D366; color: #fff; width: 80%; max-width: 300px; }
-    .btn-call { background: #0077ff; color: #fff; width: 80%; max-width: 300px; }
-
-    /* CHAT APP STYLE */
-    #chat-container { max-width: 600px; margin: 0 auto; background: #1a1a1a; border-radius: 20px; border: 2px solid var(--green); }
-    #messages { height: 350px; overflow-y: auto; padding: 20px; border-bottom: 1px solid #333; }
-    .message { margin-bottom: 15px; padding: 12px; border-radius: 12px; background: #2a2a2a; word-wrap: break-word; animation: fadeIn 0.3s; white-space: pre-line; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    .message strong { color: var(--green); }
-    .message.bot { background: #003b29; border: 1px solid var(--green); }
-    .message.bot strong { color: var(--blue); }
-    #input-area { display: flex; padding: 15px; }
-    #messageInput { flex: 1; padding: 12px; border: 1px solid #333; background: #0a0a0a; color: #fff; border-radius: 20px; outline: none; }
-    #sendBtn { padding: 12px 25px; margin-left: 10px; background: linear-gradient(90deg, var(--green), var(--blue)); color: #000; border: none; border-radius: 20px; cursor: pointer; font-weight: 700; }
+    .btn-gradient { background: linear-gradient(90deg, var(--green), var(--blue)); color: #000; border: none; padding: 14px; border-radius: 50px; cursor: pointer; font-weight: 700; width: 100%; font-size: 16px; margin-top: 10px; transition: 0.3s; }
+    .btn-gradient:hover { transform: scale(1.02); }
 
     footer { 
       text-align: center; 
@@ -284,12 +168,8 @@
     
     @media(max-width: 900px) { 
       .desktop-menu { display: none; }
-      .menu-dots { display: block; }
       #home h1 { font-size: 42px; }
       h2 { font-size: 36px; }
-      section { padding: 80px 20px; }
-      .contact-box { padding: 35px 25px; }
-      .contact-item { font-size: 17px; }
     }
   </style>
 </head>
@@ -301,25 +181,15 @@
         <div class="desktop-menu">
           <a href="#home">🏠 Home</a>
           <a href="#projects">💼 Projects</a>
-          <a href="#chat">🤖 AI Chat</a>
           <a href="#account">👤 Account</a>
           <a href="#contact">📞 Contact</a>
         </div>
         <button class="btn-login" id="loginBtn" onclick="showAccount()">Login</button>
-        <div class="menu-dots" onclick="toggleMenu()">⋮</div>
-        <div class="dropdown" id="settingMenu">
-          <a href="#home">🏠 Home</a>
-          <a href="#projects">💼 Projects</a>
-          <a href="#chat">🤖 AI Chat</a>
-          <a href="#account">👤 Account</a>
-          <a href="#contact">📞 Contact</a>
-        </div>
       </div>
     </nav>
   </header>
 
   <section id="home">
-    <div class="home-setting" onclick="toggleMenu()">⚙️</div>
     <h1>Hi, I'm SHUAIB</h1>
     <div class="img-wrapper">
       <img src="shuaib1.jpg" alt="Shuaib Photo">
@@ -328,40 +198,18 @@
     <a href="#projects" class="btn">💼 View My Work</a>
   </section>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 18px; color: #ccc;">
-      Assalamualaikum! I'm Shuaib Ahmed Solangi from Karachi. 
-      I am currently learning Web Development at SMIT. 
-      I specialize in HTML, CSS, and JavaScript. 
-      My goal is to build modern, responsive websites and become a professional developer.
-    </p>
-  </section>
-
-  <section id="skills">
-    <h2>My Skills</h2>
-    <div class="skills-container">
-      <div class="skill"><div class="skill-name"><span>HTML5</span><span>90%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div></div>
-      <div class="skill"><div class="skill-name"><span>CSS3</span><span>85%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div></div>
-      <div class="skill"><div class="skill-name"><span>JavaScript</span><span>70%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 70%;"></div></div></div>
-      <div class="skill"><div class="skill-name"><span>Git & GitHub</span><span>80%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div></div>
-    </div>
-  </section>
-
   <section id="projects">
     <h2>My Projects</h2>
     <div class="project-grid">
-      <div class="card"><h3>Portfolio Website</h3><p>Fully responsive portfolio website built with HTML5, CSS3 and hosted on GitHub Pages.</p></div>
-      <div class="card"><h3>E-commerce Website</h3><p>Daraz style online store with 50+ products, cart, search and order form.</p>
-        <p style="color:#ccc; font-size:14px; margin:10px 0;">🛍️ 50+ Products | COD Available</p>
+      <div class="card"><h3>Portfolio Website</h3><p>Fully responsive portfolio website built with HTML5, CSS3</p></div>
+      <div class="card"><h3>E-commerce Website</h3><p>Daraz style online store with 50+ products</p>
         <a href="ecommerce.html" class="btn" style="padding:10px 20px; font-size:14px;">Live Demo</a>
       </div>
-      <div class="card"><h3>🌤️ Weather App</h3><p>Real-time weather app using OpenWeather API.</p><a href="weather-app.html" class="btn" style="padding:10px 20px; font-size:14px;">Live Demo</a></div>
-      <div class="card"><h3>✅ Todo List App</h3><p>Task manager with login system and local storage.</p><a href="todo-app.html" class="btn" style="padding:10px 20px; font-size:14px;">Live Demo</a></div>
+      <div class="card"><h3>🌤️ Weather App</h3><p>Real-time weather app using OpenWeather API</p></div>
     </div>
   </section>
 
-  <!-- ACCOUNT SECTION - WHATSAPP OTP WALA -->
+  <!-- SIMPLE ACCOUNT SECTION - NO OTP -->
   <section id="account">
     <h2>My Account 👤</h2>
     <div class="form-container">
@@ -376,21 +224,10 @@
           <input type="email" id="userEmail" placeholder="example@email.com">
         </div>
         <div class="form-group">
-          <label>Pakistan Mobile - Without 0</label>
-          <input type="tel" id="userPhone" placeholder="3107389936">
-        </div>
-        <div class="form-group">
           <label>Password</label>
           <input type="password" id="userPassword" placeholder="Min 6 characters">
         </div>
-        <button class="btn-gradient" onclick="sendOTP()">Send OTP on WhatsApp</button>
-
-        <div id="otpBox" style="display:none; margin-top:20px;">
-          <label>Enter WhatsApp OTP</label>
-          <input type="text" id="otpCode" placeholder="6 Digit Code">
-          <button class="btn-gradient" onclick="verifyOTP()">Verify & Open Store</button>
-        </div>
-
+        <button class="btn-gradient" onclick="signupUser()">Create Account</button>
         <div class="form-toggle">Already have account? <span onclick="toggleForm()">Login</span></div>
       </div>
 
@@ -417,30 +254,12 @@
     </div>
   </section>
 
-  <section id="chat">
-    <h2>SHUAIB AI Chatbot 🤖</h2>
-    <div id="chat-container">
-      <div id="messages">
-        <div class="message bot"><strong>SHUAIB AI 🤖:</strong> Assalamualaikum! Main SHUAIB AI hun. Main tumhara personal AI assistant hun. Login karke account bhi bana sakte ho 😊</div>
-      </div>
-      <div id="input-area">
-        <input type="text" id="messageInput" placeholder="Koi bhi sawal poocho...">
-        <button id="sendBtn">Send</button>
-      </div>
-    </div>
-  </section>
-
   <section id="contact">
-    <h2>Contact Us My</h2>
-    <div class="contact-box">
-      <img src="shuaib1.jpg" alt="Shuaib Photo" class="contact-photo">
-      <div class="contact-item"><span class="icon">🇵🇰</span><span>+92 310 7389936</span></div>
-      <div class="contact-item"><span class="icon">📧</span><span>shuaibahmedsolangi5@gmail.com</span></div>
-      <div class="contact-item"><span class="icon">📍</span><span>Karachi, Sindh, Pakistan</span></div>
-      <div class="contact-buttons">
-        <a href="https://wa.me/923107389936" class="btn btn-whatsapp" target="_blank">💬 WhatsApp</a>
-        <a href="tel:+923107389936" class="btn btn-call">📞 Call Me</a>
-      </div>
+    <h2>Contact Us</h2>
+    <div style="text-align:center;">
+      <p>📞 +92 310 7389936</p>
+      <p>📧 shuaibahmedsolangi5@gmail.com</p>
+      <p>📍 Karachi, Sindh, Pakistan</p>
     </div>
   </section>
 
@@ -449,74 +268,84 @@
   </footer>
 
   <script>
-    const API_URL = "http://localhost:5000/api"; // hosting pe https://your-backend.onrender.com/api karna
     let isLoginMode = false;
 
-    // MENU TOGGLE
-    function toggleMenu() {
-      document.getElementById('settingMenu').classList.toggle('show');
-    }
-
-    // ACCOUNT SYSTEM - WHATSAPP OTP
     function toggleForm() {
       isLoginMode = !isLoginMode;
       document.getElementById('signupForm').style.display = isLoginMode ? 'none' : 'block';
       document.getElementById('loginForm').style.display = isLoginMode ? 'block' : 'none';
-      document.getElementById('otpBox').style.display = 'none';
     }
 
     function showAccount() {
-      if(localStorage.getItem('token')) logout();
-      else document.getElementById('account').scrollIntoView();
+      if(localStorage.getItem('token')) {
+        if(confirm("Logout karna hai?")) logout();
+      } else {
+        document.getElementById('account').scrollIntoView({behavior: 'smooth'});
+      }
     }
 
-    async function sendOTP(){
-      const phone = document.getElementById('userPhone').value;
-      if(phone.length < 10) return alert("Sahi number likho: 3107389936");
-      
-      const res = await fetch(`${API_URL}/send-otp`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({phone})
-      });
-      const data = await res.json();
-      if(data.success){
-        alert("✅ OTP WhatsApp pe bhej diya gaya hai");
-        document.getElementById('otpBox').style.display = 'block';
-      } else { alert(data.message); }
-    }
-
-    async function verifyOTP(){
-      const name = document.getElementById('userName').value;
-      const email = document.getElementById('userEmail').value;
-      const phone = document.getElementById('userPhone').value;
+    // SIMPLE SIGNUP - LOCALSTORAGE ME SAVE
+    function signupUser(){
+      const name = document.getElementById('userName').value.trim();
+      const email = document.getElementById('userEmail').value.trim();
       const password = document.getElementById('userPassword').value;
-      const otp = document.getElementById('otpCode').value;
 
-      const res = await fetch(`${API_URL}/verify-otp`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({name, email, phone, password, otp})
-      });
-      const data = await res.json();
-      if(data.success){
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('currentUser', JSON.stringify(data.user));
-        showDashboard(data.user);
-        alert("Account Verified! Welcome");
-      } else { alert(data.message); }
+      if(!name || !email || password.length < 6) return alert("⚠️ Sahi data dalo. Password 6 characters ka ho");
+
+      let users = JSON.parse(localStorage.getItem('users')) || [];
+      if(users.find(u => u.email === email)) return alert("⚠️ Ye Email pehle se registered hai");
+
+      users.push({name, email, password});
+      localStorage.setItem('users', JSON.stringify(users));
+      alert("✅ Account ban gaya! Ab Login karo");
+      document.getElementById('userName').value = '';
+      document.getElementById('userEmail').value = '';
+      document.getElementById('userPassword').value = '';
+      toggleForm();
     }
 
-    async function loginUser(){
-      const email = document.getElementById('loginEmail').value;
+    // SIMPLE LOGIN - LOCALSTORAGE SE CHECK
+    function loginUser(){
+      const email = document.getElementById('loginEmail').value.trim();
       const password = document.getElementById('loginPassword').value;
 
-      const res = await fetch(`${API_URL}/login`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({email, password})
-      });
-      const data = await res.json();
-      if(data.success){
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('currentUser', JSON.stringify(data.
+      let users = JSON.parse(localStorage.getItem('users')) || [];
+      let user = users.find(u => u.email === email && u.password === password);
+      
+      if(user){
+        localStorage.setItem('token', 'demo_token_2026');
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        showDashboard(user);
+        alert("✅ Login Successful!");
+        document.getElementById('loginEmail').value = '';
+        document.getElementById('loginPassword').value = '';
+      } else { 
+        alert("❌ Wrong Email ya Password"); 
+      }
+    }
+
+    function showDashboard(user) {
+      document.getElementById('signupForm').style.display = 'none';
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('userDashboard').style.display = 'block';
+      document.getElementById('userNameDisplay').innerText = user.name;
+      document.getElementById('userEmailDisplay').innerText = user.email;
+      document.getElementById('loginBtn').innerText = 'Logout';
+    }
+
+    function logout() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('currentUser');
+      document.getElementById('userDashboard').style.display = 'none';
+      document.getElementById('signupForm').style.display = 'block';
+      document.getElementById('loginBtn').innerText = 'Login';
+      alert("Logout ho gaye");
+    }
+
+    window.onload = () => {
+      const savedUser = JSON.parse(localStorage.getItem('currentUser'));
+      if(localStorage.getItem('token') && savedUser) showDashboard(savedUser);
+    }
+  </script>
+</body>
+</html>

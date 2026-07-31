@@ -19,7 +19,7 @@ header { background: #222; color: #fff; padding: 15px 20px; display: flex; justi
 @media(min-width: 1024px) { .product-grid { grid-template-columns: repeat(5, 1fr); } }
 .product-card { background: #fff; border-radius: 12px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; transition: 0.3s; }
 .product-card:hover { transform: translateY(-5px); }
-.product-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
+.product-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; background: #eee; }
 .product-card h3 { font-size: 15px; margin-bottom: 8px; height: 40px; overflow: hidden; }
 .price { color: #00a63e; font-size: 16px; font-weight: 700; margin-bottom: 10px; }
 .btn { background: #00a63e; color: #fff; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: 700; width: 100%; }
@@ -28,23 +28,23 @@ header { background: #222; color: #fff; padding: 15px 20px; display: flex; justi
 .back { text-align: center; margin: 30px 0; }
 .back a { text-decoration: none; color: #333; font-weight: 700; }
 
-/* LEFT SIDE CART FIXED */
+/* RIGHT SIDE CART */
 .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
 .overlay.show { display: block; }
 .cart-sidebar { 
-  position: fixed; top: 0; left: -420px; /* LEFT ME CHUPA */
+  position: fixed; top: 0; right: -420px; /* RIGHT */
   width: 100%; max-width: 400px; height: 100%; 
-  background: #fff; z-index: 1001; transition: left 0.4s ease; /* LEFT TRANSITION */
-  box-shadow: 5px 0 20px rgba(0,0,0,0.2);
+  background: #fff; z-index: 1001; transition: right 0.4s ease; /* RIGHT TRANSITION */
+  box-shadow: -5px 0 20px rgba(0,0,0,0.2);
   display: flex; flex-direction: column;
 }
-.cart-sidebar.show { left: 0; } /* LEFT 0 PE SHOW */
+.cart-sidebar.show { right: 0; } /* RIGHT 0 */
 .cart-header { padding: 20px; border-bottom: 2px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center; }
 .cart-header h3 { font-size: 20px; }
 .close-btn { font-size: 28px; cursor: pointer; color: #999; }
 .cart-items { flex: 1; overflow-y: auto; padding: 15px; }
 .cart-item { display: flex; gap: 10px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
-.cart-item img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; }
+.cart-item img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; background: #eee; }
 .cart-item-info { flex: 1; }
 .cart-item-info h4 { font-size: 14px; margin-bottom: 5px; }
 .cart-item-info .price { font-size: 14px; }
@@ -105,7 +105,7 @@ const products = [
 {id:7,name:"Laptop 15inch",price:65000,img:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400"},
 {id:8,name:"Mobile Phone",price:45000,img:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400"},
 {id:9,name:"Gaming Mouse",price:1200,img:"https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400"},
-{id:10,name:"Keyboard RGB",price:2500,img:"https://images.unsplash.com/photo-1541140532154-bbcfb0448003?w=400"},
+{id:10,name:"Keyboard RGB",price:2500,img:"https://images.unsplash.com/photo-1541140532154-bbcfb0448003?w=400"}, /* FIXED */
 {id:11,name:"Camera DSLR",price:55000,img:"https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=400"},
 {id:12,name:"Tripod Stand",price:1500,img:"https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=400"},
 {id:13,name:"Perfume 100ml",price:1500,img:"https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400"},
@@ -114,11 +114,11 @@ const products = [
 {id:16,name:"Sunglasses",price:650,img:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400"},
 {id:17,name:"Jeans Pant",price:1800,img:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=400"},
 {id:18,name:"Hoodie Jacket",price:2200,img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400"},
-{id:19,name:"Kurta Women",price:1600,img:"https://images.unsplash.com/photo-1585483338906-3c7f4d4e4c2b?w=400"},
+{id:19,name:"Kurta Women",price:1600,img:"https://images.unsplash.com/photo-1594633312681-425c5b97ccd1?w=400"}, /* FIXED */
 {id:20,name:"Cap Sports",price:350,img:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400"},
 {id:21,name:"Rice 5kg",price:900,img:"https://images.unsplash.com/photo-1589923188900-85dae523342b?w=400"},
-{id:22,name:"Cooking Oil 5L",price:1300,img:"https://images.unsplash.com/photo-1474979266404-7eaacb7d34fa?w=400"},
-{id:23,name:"Tea 500g",price:400,img:"https://images.unsplash.com/photo-1564890369478-c1b650e3f0b2?w=400"},
+{id:22,name:"Cooking Oil 5L",price:1300,img:"https://images.unsplash.com/photo-1474979266404-7eaacb7d34fa?w=400"}, /* FIXED */
+{id:23,name:"Tea 500g",price:400,img:"https://images.unsplash.com/photo-1564890369478-c1b650e3f0b2?w=400"}, /* FIXED */
 {id:24,name:"Sugar 5kg",price:500,img:"https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=400"},
 {id:25,name:"Flour 10kg",price:1100,img:"https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=400"},
 {id:26,name:"Milk 1L",price:220,img:"https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400"},
@@ -131,16 +131,16 @@ const products = [
 {id:33,name:"Sofa Cover",price:3500,img:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400"},
 {id:34,name:"Dinner Set",price:4000,img:"https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400"},
 {id:35,name:"Vacuum Cleaner",price:8500,img:"https://images.unsplash.com/photo-1558317374-067fb5f30001?w=400"},
-{id:36,name:"Lipstick Set",price:600,img:"https://images.unsplash.com/photo-1586495777744-4413f4c4f4b9?w=400"},
+{id:36,name:"Lipstick Set",price:600,img:"https://images.unsplash.com/photo-1586495777744-4413f4c4f4b9?w=400"}, /* FIXED */
 {id:37,name:"Face Wash",price:350,img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400"},
 {id:38,name:"Body Lotion",price:500,img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400"},
 {id:39,name:"Hair Dryer",price:1800,img:"https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400"},
-{id:40,name:"Makeup Brush",price:700,img:"https://images.unsplash.com/photo-1596464716127-f5a447044a30?w=400"},
-{id:41,name:"Nail Polish",price:400,img:"https://images.unsplash.com/photo-1596464716127-f5a447044a30?w=400"},
+{id:40,name:"Makeup Brush",price:700,img:"https://images.unsplash.com/photo-1596464716127-f5a447044a30?w=400"}, /* FIXED */
+{id:41,name:"Nail Polish",price:400,img:"https://images.unsplash.com/photo-1596464716127-f5a447044a30?w=400"}, /* FIXED */
 {id:42,name:"Formal Shirt",price:2000,img:"https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=400"},
-{id:43,name:"Abaya",price:2500,img:"https://images.unsplash.com/photo-1585483338906-3c7f4d4e4c2b?w=400"},
+{id:43,name:"Abaya",price:2500,img:"https://images.unsplash.com/photo-1594633312681-425c5b97ccd1?w=400"}, /* FIXED */
 {id:44,name:"USB Cable",price:200,img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400"},
-{id:45,name:"Power Bank",price:2800,img:"https://images.unsplash.com/photo-1609094869381-3c7f4d4e4c2b?w=400"},
+{id:45,name:"Power Bank",price:2800,img:"https://images.unsplash.com/photo-1593642634443-44adaa06623a?w=400"}, /* FIXED */
 {id:46,name:"Earphones",price:800,img:"https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400"},
 {id:47,name:"Smart Band",price:1800,img:"https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=400"},
 {id:48,name:"Backpack",price:1600,img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400"},
@@ -159,7 +159,7 @@ function showProducts(filterProducts = products) {
     return;
   }
   filterProducts.forEach(p => {
-    grid.innerHTML += `<div class="product-card"><img src="${p.img}"><h3>${p.name}</h3><div class="price">Rs. ${p.price.toLocaleString()}</div><button class="btn" onclick="addToCart(${p.id})">Add to Cart</button></div>`;
+    grid.innerHTML += `<div class="product-card"><img src="${p.img}" onerror="this.src='https://via.placeholder.com/400x400?text=No+Image'"><h3>${p.name}</h3><div class="price">Rs. ${p.price.toLocaleString()}</div><button class="btn" onclick="addToCart(${p.id})">Add to Cart</button></div>`;
   });
 }
 
@@ -192,7 +192,7 @@ function updateCart() {
       total += item.price;
       document.getElementById('cartItems').innerHTML += `
         <div class="cart-item">
-          <img src="${item.img}">
+          <img src="${item.img}" onerror="this.src='https://via.placeholder.com/60x60?text=No+Img'">
           <div class="cart-item-info">
             <h4>${item.name}</h4>
             <div class="price">Rs. ${item.price.toLocaleString()}</div>

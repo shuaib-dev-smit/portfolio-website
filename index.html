@@ -41,7 +41,7 @@
       letter-spacing: 2px; 
     }
     
-    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .nav-right { display: flex; align-items: center; gap: 20px; position: relative; }
     .desktop-menu { display: flex; gap: 15px; }
     .desktop-menu a { 
       color: #fff; 
@@ -66,11 +66,53 @@
       border: none;
       font-weight: 700;
       cursor: pointer;
-      transition: 0.3s;
     }
     
-    section { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
-    #home { text-align: center; padding-top: 180px; min-height: 100vh; }
+    .menu-dots { display: none; font-size: 26px; color: #fff; cursor: pointer; font-weight: bold; }
+    .dropdown { 
+      display: none; 
+      position: absolute; 
+      top: 50px; 
+      right: 0; 
+      background: #1a1a1a; 
+      border: 2px solid var(--green); 
+      border-radius: 12px; 
+      padding: 15px; 
+      min-width: 200px; 
+      z-index: 9999; 
+    }
+    .dropdown.show { display: block; }
+    .dropdown a { 
+      display: block; 
+      color: #fff; 
+      text-decoration: none; 
+      padding: 12px; 
+      border-radius: 8px; 
+      margin-bottom: 5px; 
+      font-weight: 600;
+    }
+    .dropdown a:hover { background: linear-gradient(90deg, var(--green), var(--blue)); color: #000; }
+    
+    section { padding: 100px 20px; max-width: 1100px; margin: 0 auto; }
+    #home { text-align: center; padding-top: 180px; min-height: 100vh; position: relative; }
+    
+    .home-setting { 
+      position: absolute; 
+      top: 20px; 
+      right: 20px; 
+      font-size: 28px; 
+      cursor: pointer; 
+      background: var(--glass);
+      border: 2px solid var(--green);
+      width: 55px; 
+      height: 55px; 
+      border-radius: 50%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      transition: 0.3s; 
+    }
+    .home-setting:hover { transform: rotate(90deg) scale(1.1); }
     
     #home h1 { 
       font-size: 56px; 
@@ -82,21 +124,445 @@
     }
     #home p { font-size: 22px; color: #aaa; margin-bottom: 40px; }
     
+    .img-wrapper {
+      position: relative;
+      display: inline-block;
+      margin: 30px 0;
+      z-index: 1;
+    }
+    .img-wrapper::before {
+      content: '';
+      position: absolute;
+      top: -15px; 
+      left: -15px; 
+      right: -15px; 
+      bottom: -15px;
+      background: linear-gradient(45deg, #00ff88, #0077ff, #a855f7, #00ff88);
+      background-size: 300% 300%;
+      border-radius: 50%;
+      z-index: -1;
+      animation: rotateRing 4s linear infinite, glowMove 3s ease infinite;
+      filter: blur(10px);
+    }
+    @keyframes rotateRing { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes glowMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
     #home img { 
       width: 220px; 
       height: 220px; 
       border-radius: 50%; 
-      border: 4px solid var(--green);
+      border: 4px solid #0a0a0a;
       object-fit: cover; 
       box-shadow: 0 0 40px rgba(0,255,136,0.5); 
-      margin: 30px 0;
+      position: relative;
+      z-index: 2;
     }
     
     .btn { 
       display: inline-block; 
-      padding: 14px 35px; 
+      padding: 16px 40px; 
       background: linear-gradient(90deg, var(--green), var(--blue)); 
       color: #000; 
       text-decoration: none; 
       border-radius: 50px;
-      font-weight: 700;
+      font-weight: 700; 
+      transition: 0.3s; 
+      margin: 10px; 
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,255,136,0.4); }
+    
+    h2 { 
+      font-size: 40px; 
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--green), var(--blue)); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      margin-bottom: 50px; 
+      text-align: center; 
+    }
+    
+    .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+    .card { 
+      background: #1a1a1a; 
+      padding: 35px; 
+      border-radius: 20px; 
+      border: 1px solid #333; 
+      transition: 0.4s; 
+    }
+    .card:hover { border-color: var(--green); transform: translateY(-15px); }
+    .card h3 { color: var(--green); margin-bottom: 15px; font-size: 24px; font-weight: 700; }
+
+    .skills-container { max-width: 700px; margin: 0 auto; }
+    .skill { margin-bottom: 25px; }
+    .skill-name { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 600; font-size: 18px; }
+    .skill-bar { background: #333; border-radius: 10px; height: 14px; overflow: hidden; }
+    .skill-progress { height: 100%; background: linear-gradient(90deg, var(--green), var(--blue)); border-radius: 10px; }
+
+    /* FORM STYLE */
+    .form-container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #1a1a1a;
+      padding: 40px;
+      border-radius: 20px;
+      border: 2px solid var(--green);
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--green); }
+    .form-group input {
+      width: 100%;
+      padding: 14px;
+      background: #0a0a0a;
+      border: 1px solid #333;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+    }
+    .form-group input:focus { border-color: var(--green); }
+    .form-toggle { text-align: center; margin-top: 20px; color: #aaa; }
+    .form-toggle span { color: var(--green); cursor: pointer; font-weight: 700; }
+
+    .contact-box { 
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(0, 255, 136, 0.05);
+      padding: 50px 40px;
+      border-radius: 25px;
+      border: 3px solid var(--green);
+      box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+      text-align: center;
+    }
+    .contact-photo { 
+      width: 180px; 
+      height: 180px; 
+      border-radius: 50%; 
+      border: 4px solid var(--green); 
+      object-fit: cover;
+      margin-bottom: 30px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: 18px;
+      margin: 20px 0;
+      font-weight: 600;
+      flex-wrap: wrap;
+      word-break: break-word;
+      text-align: center;
+    }
+    .contact-item .icon { font-size: 22px; }
+    .contact-buttons { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; align-items: center; }
+    .btn-whatsapp { background: #25D366; color: #fff; width: 80%; max-width: 300px; }
+    .btn-call { background: #0077ff; color: #fff; width: 80%; max-width: 300px; }
+
+    /* CHAT APP STYLE */
+    #chat-container { max-width: 600px; margin: 0 auto; background: #1a1a1a; border-radius: 20px; border: 2px solid var(--green); }
+    #messages { height: 350px; overflow-y: auto; padding: 20px; border-bottom: 1px solid #333; }
+    .message { margin-bottom: 15px; padding: 12px; border-radius: 12px; background: #2a2a2a; word-wrap: break-word; animation: fadeIn 0.3s; white-space: pre-line; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .message strong { color: var(--green); }
+    .message.bot { background: #003b29; border: 1px solid var(--green); }
+    .message.bot strong { color: var(--blue); }
+    #input-area { display: flex; padding: 15px; }
+    #messageInput { flex: 1; padding: 12px; border: 1px solid #333; background: #0a0a0a; color: #fff; border-radius: 20px; outline: none; }
+    #sendBtn { padding: 12px 25px; margin-left: 10px; background: linear-gradient(90deg, var(--green), var(--blue)); color: #000; border: none; border-radius: 20px; cursor: pointer; font-weight: 700; }
+
+    footer { 
+      text-align: center; 
+      padding: 35px 20px; 
+      background: linear-gradient(90deg, var(--green), var(--blue)); 
+      color: #000; 
+      font-weight: 700; 
+      font-size: 16px;
+    }
+    
+    @media(max-width: 900px) { 
+      .desktop-menu { display: none; }
+      .menu-dots { display: block; }
+      #home h1 { font-size: 42px; }
+      h2 { font-size: 36px; }
+      section { padding: 80px 20px; }
+      .contact-box { padding: 35px 25px; }
+      .contact-item { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">SHUAIB</div>
+      <div class="nav-right">
+        <div class="desktop-menu">
+          <a href="#home">🏠 Home</a>
+          <a href="#projects">💼 Projects</a>
+          <a href="#chat">🤖 AI Chat</a>
+          <a href="#account">👤 Account</a>
+          <a href="#contact">📞 Contact</a>
+        </div>
+        <button class="btn-login" id="loginBtn" onclick="showAccount()">Login</button>
+        <div class="menu-dots" onclick="toggleMenu()">⋮</div>
+        <div class="dropdown" id="settingMenu">
+          <a href="#home">🏠 Home</a>
+          <a href="#projects">💼 Projects</a>
+          <a href="#chat">🤖 AI Chat</a>
+          <a href="#account">👤 Account</a>
+          <a href="#contact">📞 Contact</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section id="home">
+    <div class="home-setting" onclick="toggleMenu()">⚙️</div>
+    <h1>Hi, I'm SHUAIB</h1>
+    <div class="img-wrapper">
+      <img src="shuaib1.jpg" alt="Shuaib Photo">
+    </div>
+    <p>Web Developer | SMIT Student | From Karachi, Sindh, Pakistan</p>
+    <a href="#projects" class="btn">💼 View My Work</a>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 18px; color: #ccc;">
+      Assalamualaikum! I'm Shuaib Ahmed Solangi from Karachi. 
+      I am currently learning Web Development at SMIT. 
+      I specialize in HTML, CSS, and JavaScript. 
+      My goal is to build modern, responsive websites and become a professional developer.
+    </p>
+  </section>
+
+  <section id="skills">
+    <h2>My Skills</h2>
+    <div class="skills-container">
+      <div class="skill"><div class="skill-name"><span>HTML5</span><span>90%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div></div>
+      <div class="skill"><div class="skill-name"><span>CSS3</span><span>85%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div></div>
+      <div class="skill"><div class="skill-name"><span>JavaScript</span><span>70%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 70%;"></div></div></div>
+      <!-- FIREBASE DELETE, GIT & GITHUB ADDED -->
+      <div class="skill"><div class="skill-name"><span>Git & GitHub</span><span>80%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>My Projects</h2>
+    <div class="project-grid">
+      <div class="card"><h3>Portfolio Website</h3><p>Fully responsive portfolio website built with HTML5, CSS3 and hosted on GitHub Pages.</p></div>
+      <div class="card"><h3>E-commerce Website</h3><p>Daraz style online store with 50+ products, cart, search and order form.</p>
+        <p style="color:#ccc; font-size:14px; margin:10px 0;">🛍️ 50+ Products | COD Available</p>
+        <a href="ecommerce.html" class="btn" style="padding:10px 20px; font-size:14px;">Live Demo</a>
+      </div>
+      <div class="card"><h3>🌤️ Weather App</h3><p>Real-time weather app using OpenWeather API.</p><a href="weather-app.html" class="btn" style="padding:10px 20px; font-size:14px;">Live Demo</a></div>
+      <div class="card"><h3>✅ Todo List App</h3><p>Task manager with login system and local storage.</p><a href="todo-app.html" class="btn" style="padding:10px 20px; font-size:14px;">Live Demo</a></div>
+    </div>
+  </section>
+
+  <!-- ACCOUNT SECTION -->
+  <section id="account">
+    <h2>My Account 👤</h2>
+    <div class="form-container">
+      <div id="signupForm">
+        <h3 style="text-align:center; margin-bottom:20px;">Create Account</h3>
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="signupName" placeholder="Shuaib Ahmed">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="signupEmail" placeholder="example@email.com">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="signupPassword" placeholder="Min 6 characters">
+        </div>
+        <button class="btn" style="width:100%;" onclick="signup()">Sign Up</button>
+        <div class="form-toggle">Already have account? <span onclick="toggleForm()">Login</span></div>
+      </div>
+
+      <div id="loginForm" style="display:none;">
+        <h3 style="text-align:center; margin-bottom:20px;">Login</h3>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="loginEmail" placeholder="example@email.com">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="loginPassword" placeholder="Your password">
+        </div>
+        <button class="btn" style="width:100%;" onclick="login()">Login</button>
+        <div class="form-toggle">Don't have account? <span onclick="toggleForm()">Sign Up</span></div>
+      </div>
+
+      <div id="userDashboard" style="display:none;">
+        <h3 style="text-align:center;">Welcome <span id="userName"></span> 🎉</h3>
+        <p style="text-align:center; margin:15px 0;">Email: <span id="userEmail"></span></p>
+        <button class="btn" style="width:100%; background:#ff4444;" onclick="logout()">Logout</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="chat">
+    <h2>SHUAIB AI Chatbot 🤖</h2>
+    <div id="chat-container">
+      <div id="messages">
+        <div class="message bot"><strong>SHUAIB AI 🤖:</strong> Assalamualaikum! Main SHUAIB AI hun. Main tumhara personal AI assistant hun. Login karke account bhi bana sakte ho 😊</div>
+      </div>
+      <div id="input-area">
+        <input type="text" id="messageInput" placeholder="Koi bhi sawal poocho...">
+        <button id="sendBtn">Send</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us My</h2>
+    <div class="contact-box">
+      <img src="shuaib1.jpg" alt="Shuaib Photo" class="contact-photo">
+      <div class="contact-item"><span class="icon">🇵🇰</span><span>+92 310 7389936</span></div>
+      <div class="contact-item"><span class="icon">📧</span><span>shuaibahmedsolangi5@gmail.com</span></div>
+      <div class="contact-item"><span class="icon">📍</span><span>Karachi, Sindh, Pakistan</span></div>
+      <div class="contact-buttons">
+        <a href="https://wa.me/923107389936" class="btn btn-whatsapp" target="_blank">💬 WhatsApp</a>
+        <a href="tel:+923107389936" class="btn btn-call">📞 Call Me</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 SHUAIB AHMED SOLANGI. All Rights Reserved. | Designed with ❤️</p>
+  </footer>
+
+  <script>
+    // ACCOUNT SYSTEM
+    function signup() {
+      const name = document.getElementById('signupName').value;
+      const email = document.getElementById('signupEmail').value;
+      const password = document.getElementById('signupPassword').value;
+      if(!name || !email || !password) return alert("Sab fields bharo!");
+      if(password.length < 6) return alert("Password 6 characters se kam nahi ho sakta!");
+      const user = { name, email, password };
+      localStorage.setItem('shuaibUser', JSON.stringify(user));
+      alert("Account ban gaya! Ab login karein.");
+      toggleForm();
+    }
+
+    function login() {
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      const savedUser = JSON.parse(localStorage.getItem('shuaibUser'));
+      if(savedUser && savedUser.email === email && savedUser.password === password) {
+        localStorage.setItem('isLoggedIn', 'true');
+        showDashboard(savedUser);
+      } else {
+        alert("Email ya Password galat hai!");
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem('isLoggedIn');
+      document.getElementById('userDashboard').style.display = 'none';
+      document.getElementById('loginForm').style.display = 'block';
+      document.getElementById('loginBtn').innerText = 'Login';
+    }
+
+    function showDashboard(user) {
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('signupForm').style.display = 'none';
+      document.getElementById('userDashboard').style.display = 'block';
+      document.getElementById('userName').innerText = user.name;
+      document.getElementById('userEmail').innerText = user.email;
+      document.getElementById('loginBtn').innerText = 'Logout';
+    }
+
+    function toggleForm() {
+      const signup = document.getElementById('signupForm');
+      const login = document.getElementById('loginForm');
+      signup.style.display = signup.style.display === 'none' ? 'block' : 'none';
+      login.style.display = login.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function showAccount() {
+      if(localStorage.getItem('isLoggedIn') === 'true') logout();
+      else document.getElementById('account').scrollIntoView();
+    }
+
+    window.onload = () => {
+      const savedUser = JSON.parse(localStorage.getItem('shuaibUser'));
+      if(localStorage.getItem('isLoggedIn') === 'true' && savedUser) showDashboard(savedUser);
+    }
+
+    // SHUAIB AI BOT
+    const messagesDiv = document.getElementById('messages');
+    const messageInput = document.getElementById('messageInput');
+    const sendBtn = document.getElementById('sendBtn');
+
+    const websiteData = {
+      name: "Shuaib Ahmed Solangi",
+      role: "Web Developer aur SMIT Student",
+      location: "Karachi, Sindh, Pakistan",
+      email: "shuaibahmedsolangi5@gmail.com",
+      phone: "+92 310 7389936",
+      skills: ["HTML5 - 90%", "CSS3 - 85%", "JavaScript - 70%", "Git & GitHub - 80%"],
+      projects: [
+        "Portfolio Website: Fully responsive HTML5, CSS3",
+        "E-commerce Website: 50+ Products, Cart, Order Form",
+        "Weather App: Real-time OpenWeather API",
+        "Todo List App: Login + Local storage"
+      ]
+    };
+
+    function getBotReply(text) {
+      const lower = text.toLowerCase().trim();
+      
+      if (lower.includes("hi") || lower.includes("hello")) {
+        return "Hello! Main SHUAIB AI hun 🤖. Main coding, portfolio, aur kisi bhi topic pe help kar sakta hun!";
+      }
+      if (lower.includes("skill")) {
+        return `Shuaib ki Skills:\n• ${websiteData.skills.join("\n• ")}`;
+      }
+      if (lower.includes("project")) {
+        return `Shuaib ke Projects:\n• ${websiteData.projects.join("\n• ")}`;
+      }
+      return `Main SHUAIB AI hun! "skills", "projects" poocho 😊`;
+    }
+
+    function addMessage(text, name, isBot = false) {
+      const className = isBot ? "message bot" : "message";
+      messagesDiv.innerHTML += `<div class="${className}"><strong>${name}:</strong> ${text}</div>`;
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    function sendMessage() {
+      const text = messageInput.value.trim();
+      if (!text) return;
+      addMessage(text, "You", false);
+      messageInput.value = "";
+      setTimeout(() => {
+        const replyText = getBotReply(text);
+        addMessage(replyText, "SHUAIB AI 🤖", true);
+      }, 800);
+    }
+
+    sendBtn.onclick = sendMessage;
+    messageInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") sendMessage();
+    });
+
+    function toggleMenu() {
+      document.getElementById("settingMenu").classList.toggle("show");
+    }
+    window.onclick = function(event) {
+      if (!event.target.matches('.menu-dots') && !event.target.matches('.home-setting')) {
+        var dropdown = document.getElementById("settingMenu");
+        if (dropdown && dropdown.classList.contains('show')) {
+          dropdown.classList.remove('show');
+        }
+      }
+    }
+  </script>
+</body>
+</html>

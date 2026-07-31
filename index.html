@@ -207,7 +207,20 @@
       object-fit: cover;
       margin-bottom: 30px;
     }
-    .contact-item { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 20px; margin: 20px 0; font-weight: 600; }
+    /* YAHAN FIX KIYA */
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: 18px; /* chota kiya */
+      margin: 20px 0;
+      font-weight: 600;
+      flex-wrap: wrap; /* tootne ke liye */
+      word-break: break-word; /* email toot jaye */
+      text-align: center;
+    }
+    .contact-item .icon { font-size: 22px; }
     .contact-buttons { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; align-items: center; }
     .btn-whatsapp { background: #25D366; color: #fff; width: 80%; max-width: 300px; }
     .btn-call { background: #0077ff; color: #fff; width: 80%; max-width: 300px; }
@@ -236,6 +249,8 @@
       #home h1 { font-size: 42px; }
       h2 { font-size: 36px; }
       section { padding: 80px 20px; }
+      .contact-box { padding: 35px 25px; }
+      .contact-item { font-size: 17px; } /* mobile me aur chota */
     }
   </style>
 </head>
@@ -301,7 +316,6 @@
     </div>
   </section>
 
-  <!-- CHAT APP SECTION ADD KIYA -->
   <section id="chat">
     <h2>Live Chat App 🔥</h2>
     <div id="chat-container">
@@ -317,9 +331,10 @@
     <h2>Contact Us My</h2>
     <div class="contact-box">
       <img src="shuaib1.jpg" alt="Shuaib Photo" class="contact-photo">
+      <!-- YAHAN "Email:" aur "Location:" hata diya -->
       <div class="contact-item"><span class="icon">🇵🇰</span><span>+92 310 7389936</span></div>
-      <div class="contact-item"><span class="icon">📧</span><span>Email: shuaibahmedsolangi5@gmail.com</span></div>
-      <div class="contact-item"><span class="icon">📍</span><span>Location: Karachi, Sindh, Pakistan</span></div>
+      <div class="contact-item"><span class="icon">📧</span><span>shuaibahmedsolangi5@gmail.com</span></div>
+      <div class="contact-item"><span class="icon">📍</span><span>Karachi, Sindh, Pakistan</span></div>
       <div class="contact-buttons">
         <a href="https://wa.me/923107389936" class="btn btn-whatsapp" target="_blank">💬 WhatsApp</a>
         <a href="tel:+923107389936" class="btn btn-call">📞 Call Me</a>

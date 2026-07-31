@@ -122,19 +122,22 @@ const products = [
 {id:50,name:"Wallet Leather",price:799,img:"https://images.unsplash.com/photo-1627123424574-724758594e93?w=400",category:"Clothes"}
 ];
 
-let cart = []; 
+let cart = JSON.parse(localStorage.getItem('cart')) || []; 
 let currentCategory = 'all';
 let currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
 // CHECK LOGIN ON LOAD
 window.onload = function(){
+  // DEMO KE LIYE: Agar login nahi hai to bhi store khul jaye
   if(!localStorage.getItem('token')){
-    alert("⚠️ Pehle Login karo");
-    window.location.href = "index.html";
-    return;
+    // alert("⚠️ Pehle Login karo"); 
+    // window.location.href = "index.html";
+    // return;
+    document.getElementById('accountBtn').innerText = "Login";
+  } else {
+    let userName = currentUser ? (currentUser.name || currentUser.email) : "User";
+    document.getElementById('accountBtn').innerText = "Logout - " + userName;
   }
-  let userName = currentUser ? (currentUser.name || currentUser.phone) : "User";
-  document.getElementById('accountBtn').innerText = "Logout - " + userName;
   showProducts();
   updateCartCount();
 }
@@ -145,7 +148,7 @@ function showProducts(filterProducts = products) {
   filterProducts.forEach(p => {
     grid.innerHTML += `
     <div class="product-card">
-      <img src="${p.img}" alt="${p.name}">
+      <img src="${p.img}" alt="${p.name}" loading="lazy">
       <h3>${p.name}</h3>
       <div class="price">Rs. ${p.price.toLocaleString()}</div>
       <button class="btn" onclick="addToCart(${p.id})">Add to Cart</button>
@@ -171,6 +174,7 @@ document.getElementById('searchInput').addEventListener('keyup', function(){
 function addToCart(id) { 
   const product = products.find(p => p.id === id); 
   cart.push(product); 
+  localStorage.setItem('cart', JSON.stringify(cart));
   updateCartCount();
   alert("✅ " + product.name + " added to cart!"); 
 }
@@ -182,7 +186,11 @@ function updateCartCount(){
 function showOrderForm() { 
   if(cart.length === 0) return alert("Cart khali hai!");
   let total = cart.reduce((sum, item) => sum + item.price, 0);
-  alert(`Cart: ${cart.length} items\nTotal: Rs. ${total.toLocaleString()}\n\nOrder ke liye WhatsApp karein: 03107389936`);
+  let items = cart.map(i => i.name).join('\n- ');
+  alert(`Cart: ${cart.length} items\n\n- ${items}\n\nTotal: Rs. ${total.toLocaleString()}\n\nOrder ke liye WhatsApp karein: 03107389936`);
+  localStorage.removeItem('cart'); 
+  cart = []; 
+  updateCartCount();
 }
 
 function logout(){ 

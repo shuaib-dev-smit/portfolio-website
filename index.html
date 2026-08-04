@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#00ff88"> <!-- APP KE LIYE -->
   <title>SHUAIB - Web Developer Portfolio</title>
+  <link rel="manifest" href="manifest.json"> <!-- APP KE LIYE -->
   
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -200,7 +202,6 @@
     .skill-bar { background: #333; border-radius: 10px; height: 14px; overflow: hidden; }
     .skill-progress { height: 100%; background: linear-gradient(90deg, var(--green), var(--blue)); border-radius: 10px; }
 
-    /* FORM STYLE */
     .form-container {
       max-width: 500px;
       margin: 0 auto;
@@ -260,7 +261,6 @@
     .btn-whatsapp { background: #25D366; color: #fff; width: 80%; max-width: 300px; }
     .btn-call { background: #0077ff; color: #fff; width: 80%; max-width: 300px; }
 
-    /* CHAT APP STYLE */
     #chat-container { max-width: 600px; margin: 0 auto; background: #1a1a1a; border-radius: 20px; border: 2px solid var(--green); }
     #messages { height: 350px; overflow-y: auto; padding: 20px; border-bottom: 1px solid #333; }
     .message { margin-bottom: 15px; padding: 12px; border-radius: 12px; background: #2a2a2a; word-wrap: break-word; animation: fadeIn 0.3s; white-space: pre-line; }
@@ -343,7 +343,6 @@
       <div class="skill"><div class="skill-name"><span>HTML5</span><span>90%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div></div>
       <div class="skill"><div class="skill-name"><span>CSS3</span><span>85%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div></div>
       <div class="skill"><div class="skill-name"><span>JavaScript</span><span>70%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 70%;"></div></div></div>
-      <!-- FIREBASE DELETE, GIT & GITHUB ADDED -->
       <div class="skill"><div class="skill-name"><span>Git & GitHub</span><span>80%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div></div>
     </div>
   </section>
@@ -361,7 +360,6 @@
     </div>
   </section>
 
-  <!-- ACCOUNT SECTION -->
   <section id="account">
     <h2>My Account 👤</h2>
     <div class="form-container">
@@ -437,6 +435,11 @@
   </footer>
 
   <script>
+    // MENU TOGGLE
+    function toggleMenu(){
+      document.getElementById('settingMenu').classList.toggle('show');
+    }
+
     // ACCOUNT SYSTEM
     function signup() {
       const name = document.getElementById('signupName').value;
@@ -521,48 +524,58 @@
       if (lower.includes("hi") || lower.includes("hello")) {
         return "Hello! Main SHUAIB AI hun 🤖. Main coding, portfolio, aur kisi bhi topic pe help kar sakta hun!";
       }
-      if (lower.includes("skill")) {
-        return `Shuaib ki Skills:\n• ${websiteData.skills.join("\n• ")}`;
+      if(lower.includes("name") || lower.includes("naam")){
+        return `Mera naam ${websiteData.name} hai. Main ${websiteData.role} hun.`;
       }
-      if (lower.includes("project")) {
-        return `Shuaib ke Projects:\n• ${websiteData.projects.join("\n• ")}`;
+      if(lower.includes("skill")){
+        return `Meri Skills: \n${websiteData.skills.join('\n')}`;
       }
-      return `Main SHUAIB AI hun! "skills", "projects" poocho 😊`;
+      if(lower.includes("project")){
+        return `Mere Projects: \n${websiteData.projects.join('\n')}`;
+      }
+      if(lower.includes("contact") || lower.includes("email") || lower.includes("number")){
+        return `Contact: \n📧 ${websiteData.email}\n📞 ${websiteData.phone}\n📍 ${websiteData.location}`;
+      }
+      return "Sorry, main samjha nahi. 'skills', 'projects' ya 'contact' likh ke dekho 😊";
     }
 
-    function addMessage(text, name, isBot = false) {
-      const className = isBot ? "message bot" : "message";
-      messagesDiv.innerHTML += `<div class="${className}"><strong>${name}:</strong> ${text}</div>`;
+    function addMessage(text, sender) {
+      const div = document.createElement('div');
+      div.classList.add('message');
+      if(sender === 'bot') div.classList.add('bot');
+      div.innerHTML = `<strong>${sender === 'bot' ? 'SHUAIB AI 🤖:' : 'You:'}</strong> ${text}`;
+      messagesDiv.appendChild(div);
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
 
-    function sendMessage() {
+    sendBtn.onclick = () => {
       const text = messageInput.value.trim();
-      if (!text) return;
-      addMessage(text, "You", false);
-      messageInput.value = "";
+      if(text === '') return;
+      addMessage(text, 'user');
+      messageInput.value = '';
       setTimeout(() => {
-        const replyText = getBotReply(text);
-        addMessage(replyText, "SHUAIB AI 🤖", true);
-      }, 800);
+        addMessage(getBotReply(text), 'bot');
+      }, 500);
     }
 
-    sendBtn.onclick = sendMessage;
-    messageInput.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") sendMessage();
+    messageInput.addEventListener('keypress', (e) => {
+      if(e.key === 'Enter') sendBtn.click();
     });
 
-    function toggleMenu() {
-      document.getElementById("settingMenu").classList.toggle("show");
+    // PWA INSTALL CODE
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
     }
-    window.onclick = function(event) {
-      if (!event.target.matches('.menu-dots') && !event.target.matches('.home-setting')) {
-        var dropdown = document.getElementById("settingMenu");
-        if (dropdown && dropdown.classList.contains('show')) {
-          dropdown.classList.remove('show');
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      setTimeout(() => {
+        if(confirm("📲 App Install karna chahte ho?")) {
+          deferredPrompt.prompt();
         }
-      }
-    }
+      }, 4000);
+    });
   </script>
 </body>
 </html>

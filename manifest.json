@@ -1,0 +1,21 @@
+{
+  "name": "SHUAIB Portfolio App",
+  "short_name": "SHUAIB",
+  "description": "Web Developer Portfolio by Shuaib Ahmed",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#00ff88",
+  "icons": [
+    {
+      "src": "shuaib1.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "shuaib1.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
